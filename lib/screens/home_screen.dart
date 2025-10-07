@@ -1,3 +1,4 @@
+import 'package:ecoshop/models/app_banner_Model.dart';
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import 'cart_screen.dart';
@@ -9,6 +10,8 @@ import '../models/category.dart' as cat;
 import '../widgets/product_card.dart';
 import 'product_detail_screen.dart';
 import '../screens/view_all_product_screen.dart';
+
+import 'package:ecoshop/widgets/banner_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,8 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentBannerIndex = 0;
 
   // Sample Data - Replace with API calls
-  final List<AppBanner> banners = [
-    AppBanner(
+  final List<AppBannerModel> banners = [
+    AppBannerModel(
       id: 1,
       title: "Mega Sale",
       subtitle: "Up to 70% OFF",
@@ -31,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       link: "/sale",
       buttonText: "Shop Now",
     ),
-    AppBanner(
+    AppBannerModel(
       id: 2,
       title: "New Arrivals",
       subtitle: "Fresh Fashion",
@@ -39,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
       link: "/new-arrivals",
       buttonText: "Explore",
     ),
-    AppBanner(
+    AppBannerModel(
       id: 3,
       title: "Electronics Fest",
       subtitle: "Latest Gadgets",
@@ -612,147 +615,5 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-// AppBanner Model Class
-class AppBanner {
-  final int id;
-  final String title;
-  final String subtitle;
-  final String image;
-  final String link;
-  final String buttonText;
 
-  AppBanner({
-    required this.id,
-    required this.title,
-    required this.subtitle,
-    required this.image,
-    required this.link,
-    required this.buttonText,
-  });
-}
 
-// AppBannerCard Widget
-class AppBannerCard extends StatelessWidget {
-  final AppBanner banner;
-  final VoidCallback? onTap;
-
-  const AppBannerCard({Key? key, required this.banner, this.onTap}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Stack(
-          children: [
-            // Banner Image
-            Positioned.fill(
-              child: Image.network(
-                banner.image,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => Container(
-                  decoration: BoxDecoration(
-                    gradient: AppTheme.accentGradient,
-                  ),
-                  child: const Center(
-                    child: Icon(Icons.image, size: 64, color: Colors.white),
-                  ),
-                ),
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Container(
-                    decoration: BoxDecoration(
-                      gradient: AppTheme.accentGradient,
-                    ),
-                    child: const Center(
-                      child: CircularProgressIndicator(color: Colors.white),
-                    ),
-                  );
-                },
-              ),
-            ),
-
-            // Gradient Overlay
-            Positioned.fill(
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.black.withOpacity(0.6),
-                      Colors.black.withOpacity(0.2),
-                      Colors.transparent
-                    ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                  ),
-                ),
-              ),
-            ),
-
-            // Content
-            Positioned(
-              bottom: 20,
-              left: 20,
-              right: 20,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    banner.title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        Shadow(
-                          offset: Offset(0, 1),
-                          blurRadius: 4,
-                          color: Colors.black54,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    banner.subtitle,
-                    style: const TextStyle(
-                      color: Colors.white70,
-                      fontSize: 16,
-                      shadows: [
-                        Shadow(
-                          offset: Offset(0, 1),
-                          blurRadius: 3,
-                          color: Colors.black45,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  ElevatedButton(
-                    onPressed: onTap,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppTheme.accentColor,
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    ),
-                    child: Text(
-                      banner.buttonText,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

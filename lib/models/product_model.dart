@@ -77,6 +77,7 @@ class ProductModel {
   }
 }
 
+
 class ProductModelVariant {
   final String type;
   final List<String> options;

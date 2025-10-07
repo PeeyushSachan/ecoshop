@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../models/product_model.dart';
+import '../models/cart_model.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -15,8 +16,8 @@ class _CartScreenState extends State<CartScreen> {
   double _couponDiscount = 0;
 
   // Sample cart items
-  List<CartItemData> cartItems = [
-    CartItemData(
+  List<CartModelData> cartItems = [
+    CartModelData(
       product: ProductModel(
         id: 101,
         name: "iPhone 15 Pro Max",
@@ -37,7 +38,7 @@ class _CartScreenState extends State<CartScreen> {
       quantity: 1,
       selectedVariants: {"color": "Natural Titanium", "storage": "256GB"},
     ),
-    CartItemData(
+    CartModelData(
       product: ProductModel(
         id: 102,
         name: "Nike Air Max 270",
@@ -230,7 +231,7 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  Widget _buildCartItem(CartItemData item) {
+  Widget _buildCartItem(CartModelData item) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
@@ -630,13 +631,13 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  void _updateQuantity(CartItemData item, int newQuantity) {
+  void _updateQuantity(CartModelData item, int newQuantity) {
     setState(() {
       item.quantity = newQuantity;
     });
   }
 
-  void _removeItem(CartItemData item) {
+  void _removeItem(CartModelData item) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -671,7 +672,7 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  void _saveForLater(CartItemData item) {
+  void _saveForLater(CartModelData item) {
     setState(() {
       cartItems.remove(item);
     });
@@ -726,14 +727,3 @@ class _CartScreenState extends State<CartScreen> {
   }
 }
 
-class CartItemData {
-  final ProductModel product;
-  int quantity;
-  final Map<String, String> selectedVariants;
-
-  CartItemData({
-    required this.product,
-    required this.quantity,
-    required this.selectedVariants,
-  });
-}
