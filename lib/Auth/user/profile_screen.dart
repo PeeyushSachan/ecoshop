@@ -1,6 +1,8 @@
+
+
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
-import '../../models/product.dart';
+import '../../models/product_model.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -181,6 +183,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           const SizedBox(width: 16),
           _buildStatCard(
+            onTap: () {
+              Navigator.pushNamed(context, '/my-wishlist');
+            },
+           
             icon: Icons.favorite_outline,
             label: 'Wishlist',
             value: user.wishlist.toString(),
@@ -198,13 +204,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildStatCard({
-    required IconData icon,
-    required String label,
-    required String value,
-    required Color color,
-  }) {
-    return Expanded(
+Widget _buildStatCard({
+  required IconData icon,
+  required String label,
+  required String value,
+  required Color color,
+  VoidCallback? onTap, // 👈 callback parameter add kiya
+}) {
+  return Expanded(
+    child: GestureDetector(
+      onTap: onTap, // 👈 ye tab chalega jab user card pe tap karega
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: AppTheme.cardDecoration,
@@ -230,8 +239,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   Widget _buildMenuOptions() {
     return Container(
@@ -253,42 +264,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
             icon: Icons.location_on_outlined,
             title: 'Manage Addresses',
             subtitle: 'Save addresses for a faster checkout',
-            onTap: () {},
+            onTap: () {
+
+              Navigator.pushNamed(context, '/manage-address');  
+            },
           ),
           const Divider(height: 1),
           _buildMenuItem(
             icon: Icons.payment_outlined,
             title: 'Payment Methods',
             subtitle: 'Manage your saved cards and wallets',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, '/payment-method');
+
+            },
           ),
           const Divider(height: 1),
           _buildMenuItem(
             icon: Icons.favorite_outline,
             title: 'My Wishlist',
             subtitle: 'Your most loved products',
-            onTap: () {},
+            onTap: () {
+
+               Navigator.pushNamed(context, '/my-wishlist');
+            },
           ),
           const Divider(height: 1),
           _buildMenuItem(
             icon: Icons.local_offer_outlined,
             title: 'Coupons & Offers',
             subtitle: 'Get exciting deals and offers',
-            onTap: () {},
+            onTap: () {
+                Navigator.pushNamed(context, '/coupons-and-offers');
+            },
           ),
           const Divider(height: 1),
           _buildMenuItem(
             icon: Icons.card_giftcard_outlined,
             title: 'Gift Cards',
             subtitle: 'Buy, gift and redeem gift cards',
-            onTap: () {},
+            onTap: () {
+                Navigator.pushNamed(context, '/gift-card');
+            },
           ),
           const Divider(height: 1),
           _buildMenuItem(
             icon: Icons.notifications_outlined,
             title: 'Notifications',
             subtitle: 'Manage your notification preferences',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, '/notifications');
+            },
           ),
         ],
       ),
@@ -356,11 +382,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                _buildSupportItem('Help Center', Icons.help_outline),
-                _buildSupportItem('Contact Us', Icons.contact_support_outlined),
-                _buildSupportItem('About Us', Icons.info_outline),
-                _buildSupportItem('Terms & Conditions', Icons.description_outlined),
-                _buildSupportItem('Privacy Policy', Icons.privacy_tip_outlined),
+                _buildSupportItem('Help Center', Icons.help_outline ,  () {
+                  Navigator.pushNamed(context, '/help-center');
+                }),
+                _buildSupportItem('Contact Us', Icons.contact_support_outlined, () {
+                  Navigator.pushNamed(context, '/contact-us');
+                }),
+                _buildSupportItem('About Us', Icons.info_outline, () {
+                  Navigator.pushNamed(context, '/about-us');
+                }),
+                _buildSupportItem('Terms & Conditions', Icons.description_outlined, () {
+                  Navigator.pushNamed(context, '/terms-and-conditions');
+                }),
+                _buildSupportItem('Privacy Policy', Icons.privacy_tip_outlined, () {
+                  Navigator.pushNamed(context, '/privacy-policy');
+                }),
               ],
             ),
           ),
@@ -428,7 +464,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildSupportItem(String title, IconData icon) {
+  Widget _buildSupportItem(String title, IconData icon, VoidCallback? onTap) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: Icon(icon, color: AppTheme.textMuted, size: 20),
@@ -444,9 +480,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         color: AppTheme.textMuted,
         size: 12,
       ),
-      onTap: () {
-        // Navigate to respective page
-      },
+      onTap: onTap
+
+      
     );
   }
 

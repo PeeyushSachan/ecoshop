@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
-import '../../models/product.dart';
+import '../../models/product_model.dart';
 import '../../widgets/product_card.dart';
 import '../../screens/product_detail_screen.dart';
 
@@ -12,8 +12,8 @@ class MyWishlistScreen extends StatefulWidget {
 }
 
 class _MyWishlistScreenState extends State<MyWishlistScreen> {
-  List<Product> wishlistProducts = [
-    Product(
+  List<ProductModel> wishlistProducts = [
+    ProductModel(
       id: 101,
       name: "iPhone 15 Pro Max",
       description: "Latest flagship smartphone with titanium design and advanced camera system",
@@ -24,13 +24,13 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
       reviews: 1234,
       categoryId: 1,
       variants: [
-        ProductVariant(type: "color", options: ["Natural Titanium", "Blue Titanium"]),
-        ProductVariant(type: "storage", options: ["128GB", "256GB", "512GB"])
+        ProductModelVariant(type: "color", options: ["Natural Titanium", "Blue Titanium"]),
+        ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB"])
       ],
       inStock: true,
       brand: "Apple",
     ),
-    Product(
+    ProductModel(
       id: 201,
       name: "Nike Air Max 270",
       description: "Comfortable running shoes with Max Air cushioning technology",
@@ -41,13 +41,13 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
       reviews: 892,
       categoryId: 2,
       variants: [
-        ProductVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
-        ProductVariant(type: "color", options: ["Black", "White", "Navy"])
+        ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
+        ProductModelVariant(type: "color", options: ["Black", "White", "Navy"])
       ],
       inStock: true,
       brand: "Nike",
     ),
-    Product(
+    ProductModel(
       id: 301,
       name: "IKEA Malm Bed Frame",
       description: "Modern wooden bed frame with clean lines and ample storage space",
@@ -58,13 +58,13 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
       reviews: 234,
       categoryId: 3,
       variants: [
-        ProductVariant(type: "size", options: ["Single", "Double", "Queen"]),
-        ProductVariant(type: "color", options: ["White", "Oak", "Black-Brown"])
+        ProductModelVariant(type: "size", options: ["Single", "Double", "Queen"]),
+        ProductModelVariant(type: "color", options: ["White", "Oak", "Black-Brown"])
       ],
       inStock: true,
       brand: "IKEA",
     ),
-    Product(
+    ProductModel(
       id: 501,
       name: "Lakme Absolute Lipstick",
       description: "Long-lasting matte lipstick with rich color payoff",
@@ -75,12 +75,12 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
       reviews: 567,
       categoryId: 5,
       variants: [
-        ProductVariant(type: "shade", options: ["Red Envy", "Pink Crush", "Coral Blush"])
+        ProductModelVariant(type: "shade", options: ["Red Envy", "Pink Crush", "Coral Blush"])
       ],
       inStock: false,
       brand: "Lakme",
     ),
-    Product(
+    ProductModel(
       id: 601,
       name: "The Alchemist",
       description: "International bestseller by Paulo Coelho about following your dreams",
@@ -91,7 +91,7 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
       reviews: 1567,
       categoryId: 6,
       variants: [
-        ProductVariant(type: "format", options: ["Paperback", "Hardcover", "eBook"])
+        ProductModelVariant(type: "format", options: ["Paperback", "Hardcover", "eBook"])
       ],
       inStock: true,
       brand: "HarperCollins",
@@ -101,8 +101,8 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
   bool _isGridView = true;
   String _sortBy = 'added_date';
 
-  List<Product> get sortedProducts {
-    List<Product> products = List.from(wishlistProducts);
+  List<ProductModel> get sortedProducts {
+    List<ProductModel> products = List.from(wishlistProducts);
     
     switch (_sortBy) {
       case 'price_low':
@@ -347,7 +347,7 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
     return _isGridView ? _buildGridView(products) : _buildListView(products);
   }
 
-  Widget _buildGridView(List<Product> products) {
+  Widget _buildGridView(List<ProductModel> products) {
     return GridView.builder(
       padding: const EdgeInsets.all(16),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -414,7 +414,7 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
     );
   }
 
-  Widget _buildListView(List<Product> products) {
+  Widget _buildListView(List<ProductModel> products) {
     return ListView.builder(
       padding: const EdgeInsets.all(16),
       itemCount: products.length,
@@ -597,7 +597,7 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
     );
   }
 
-  void _removeFromWishlist(Product product) {
+  void _removeFromWishlist(ProductModel product) {
     setState(() {
       wishlistProducts.removeWhere((p) => p.id == product.id);
     });
@@ -619,7 +619,7 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
     );
   }
 
-  void _addToCart(Product product) {
+  void _addToCart(ProductModel product) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('${product.name} added to cart'),

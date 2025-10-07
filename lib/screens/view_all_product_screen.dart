@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
-import '../models/product.dart';
+import '../models/product_model.dart';
 import '../widgets/product_card.dart';
 import 'product_detail_screen.dart';
 
@@ -15,12 +15,12 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
   String _sortBy = 'popular';
   bool _isGridView = true;
   String _selectedCategory = 'All';
-  List<Product> _filteredProducts = [];
+  List<ProductModel> _filteredProducts = [];
 
   // All Products Data
-  final List<Product> allProducts = [
+  final List<ProductModel> allProducts = [
     // Electronics
-    Product(
+    ProductModel(
       id: 101,
       name: "iPhone 15 Pro Max",
       description: "Latest flagship smartphone with titanium design and advanced camera system",
@@ -31,13 +31,13 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 1234,
       categoryId: 1,
       variants: [
-        ProductVariant(type: "color", options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]),
-        ProductVariant(type: "storage", options: ["128GB", "256GB", "512GB", "1TB"])
+        ProductModelVariant(type: "color", options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]),
+        ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB", "1TB"])
       ],
       inStock: true,
       brand: "Apple",
     ),
-    Product(
+    ProductModel(
       id: 102,
       name: "Samsung Galaxy S24 Ultra",
       description: "Flagship Android smartphone with S Pen and AI features",
@@ -48,13 +48,13 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 890,
       categoryId: 1,
       variants: [
-        ProductVariant(type: "color", options: ["Titanium Black", "Titanium Gray", "Titanium Violet"]),
-        ProductVariant(type: "storage", options: ["256GB", "512GB", "1TB"])
+        ProductModelVariant(type: "color", options: ["Titanium Black", "Titanium Gray", "Titanium Violet"]),
+        ProductModelVariant(type: "storage", options: ["256GB", "512GB", "1TB"])
       ],
       inStock: true,
       brand: "Samsung",
     ),
-    Product(
+    ProductModel(
       id: 103,
       name: "MacBook Air M2",
       description: "Lightweight laptop with M2 chip and all-day battery life",
@@ -65,14 +65,14 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 567,
       categoryId: 1,
       variants: [
-        ProductVariant(type: "color", options: ["Space Gray", "Silver", "Gold", "Starlight"]),
-        ProductVariant(type: "memory", options: ["8GB", "16GB", "24GB"]),
-        ProductVariant(type: "storage", options: ["256GB", "512GB", "1TB", "2TB"])
+        ProductModelVariant(type: "color", options: ["Space Gray", "Silver", "Gold", "Starlight"]),
+        ProductModelVariant(type: "memory", options: ["8GB", "16GB", "24GB"]),
+        ProductModelVariant(type: "storage", options: ["256GB", "512GB", "1TB", "2TB"])
       ],
       inStock: true,
       brand: "Apple",
     ),
-    Product(
+    ProductModel (
       id: 104,
       name: "iPad Pro 12.9-inch",
       description: "Most advanced iPad with M2 chip and Liquid Retina XDR display",
@@ -83,13 +83,13 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 723,
       categoryId: 1,
       variants: [
-        ProductVariant(type: "color", options: ["Space Gray", "Silver"]),
-        ProductVariant(type: "storage", options: ["128GB", "256GB", "512GB", "1TB", "2TB"])
+        ProductModelVariant(type: "color", options: ["Space Gray", "Silver"]),
+        ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB", "1TB", "2TB"])
       ],
       inStock: true,
       brand: "Apple",
     ),
-    Product(
+    ProductModel(
       id: 105,
       name: "Sony WH-1000XM5",
       description: "Premium noise-canceling wireless headphones",
@@ -100,14 +100,14 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 456,
       categoryId: 1,
       variants: [
-        ProductVariant(type: "color", options: ["Black", "Silver"])
+        ProductModelVariant(type: "color", options: ["Black", "Silver"])
       ],
       inStock: true,
       brand: "Sony",
     ),
 
     // Fashion
-    Product(
+    ProductModel(
       id: 201,
       name: "Nike Air Max 270",
       description: "Comfortable running shoes with Max Air cushioning technology",
@@ -118,13 +118,13 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 892,
       categoryId: 2,
       variants: [
-        ProductVariant(type: "size", options: ["7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11"]),
-        ProductVariant(type: "color", options: ["Black", "White", "Navy", "Red", "Blue"])
+        ProductModelVariant(type: "size", options: ["7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11"]),
+        ProductModelVariant(type: "color", options: ["Black", "White", "Navy", "Red", "Blue"])
       ],
       inStock: true,
       brand: "Nike",
     ),
-    Product(
+    ProductModel(
       id: 202,
       name: "Adidas Ultraboost 22",
       description: "Revolutionary running shoes with responsive BOOST cushioning",
@@ -135,13 +135,13 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 678,
       categoryId: 2,
       variants: [
-        ProductVariant(type: "size", options: ["7", "8", "9", "10", "11", "12"]),
-        ProductVariant(type: "color", options: ["Black", "White", "Blue", "Red", "Gray"])
+        ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11", "12"]),
+        ProductModelVariant(type: "color", options: ["Black", "White", "Blue", "Red", "Gray"])
       ],
       inStock: true,
       brand: "Adidas",
     ),
-    Product(
+    ProductModel(
       id: 203,
       name: "Levi's 501 Original Jeans",
       description: "Classic straight-leg jeans with authentic vintage fit",
@@ -152,13 +152,13 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 2134,
       categoryId: 2,
       variants: [
-        ProductVariant(type: "size", options: ["28", "30", "32", "34", "36", "38"]),
-        ProductVariant(type: "color", options: ["Dark Blue", "Light Blue", "Black", "Gray"])
+        ProductModelVariant(type: "size", options: ["28", "30", "32", "34", "36", "38"]),
+        ProductModelVariant(type: "color", options: ["Dark Blue", "Light Blue", "Black", "Gray"])
       ],
       inStock: true,
       brand: "Levi's",
     ),
-    Product(
+    ProductModel(
       id: 204,
       name: "Zara Cotton T-Shirt",
       description: "Premium cotton t-shirt with modern fit",
@@ -169,15 +169,15 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 456,
       categoryId: 2,
       variants: [
-        ProductVariant(type: "size", options: ["XS", "S", "M", "L", "XL", "XXL"]),
-        ProductVariant(type: "color", options: ["Black", "White", "Navy", "Gray", "Red"])
+        ProductModelVariant(type: "size", options: ["XS", "S", "M", "L", "XL", "XXL"]),
+        ProductModelVariant(type: "color", options: ["Black", "White", "Navy", "Gray", "Red"])
       ],
       inStock: true,
       brand: "Zara",
     ),
 
     // Home & Garden
-    Product(
+    ProductModel(
       id: 301,
       name: "IKEA Malm Bed Frame",
       description: "Modern wooden bed frame with clean lines",
@@ -188,13 +188,13 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 234,
       categoryId: 3,
       variants: [
-        ProductVariant(type: "size", options: ["Single", "Double", "Queen", "King"]),
-        ProductVariant(type: "color", options: ["White", "Oak", "Black-Brown"])
+        ProductModelVariant(type: "size", options: ["Single", "Double", "Queen", "King"]),
+        ProductModelVariant(type: "color", options: ["White", "Oak", "Black-Brown"])
       ],
       inStock: true,
       brand: "IKEA",
     ),
-    Product(
+    ProductModel(
       id: 302,
       name: "Philips Air Purifier",
       description: "Advanced air purification with HEPA filter",
@@ -205,15 +205,15 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 156,
       categoryId: 3,
       variants: [
-        ProductVariant(type: "coverage", options: ["Small Room", "Medium Room", "Large Room"]),
-        ProductVariant(type: "color", options: ["White", "Black"])
+        ProductModelVariant(type: "coverage", options: ["Small Room", "Medium Room", "Large Room"]),
+        ProductModelVariant(type: "color", options: ["White", "Black"])
       ],
       inStock: true,
       brand: "Philips",
     ),
 
     // Sports & Fitness
-    Product(
+    ProductModel(
       id: 401,
       name: "Yoga Mat Premium",
       description: "Non-slip yoga mat with superior grip",
@@ -224,15 +224,15 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 345,
       categoryId: 4,
       variants: [
-        ProductVariant(type: "thickness", options: ["4mm", "6mm", "8mm"]),
-        ProductVariant(type: "color", options: ["Purple", "Blue", "Green", "Pink"])
+        ProductModelVariant(type: "thickness", options: ["4mm", "6mm", "8mm"]),
+        ProductModelVariant(type: "color", options: ["Purple", "Blue", "Green", "Pink"])
       ],
       inStock: true,
       brand: "FitnessPro",
     ),
 
     // Beauty & Care
-    Product(
+    ProductModel(
       id: 501,
       name: "Lakme Absolute Lipstick",
       description: "Long-lasting matte lipstick with rich color",
@@ -243,14 +243,14 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 567,
       categoryId: 5,
       variants: [
-        ProductVariant(type: "shade", options: ["Red Envy", "Pink Crush", "Coral Blush"])
+        ProductModelVariant(type: "shade", options: ["Red Envy", "Pink Crush", "Coral Blush"])
       ],
       inStock: true,
       brand: "Lakme",
     ),
 
     // Books & Media
-    Product(
+    ProductModel(
       id: 601,
       name: "The Alchemist",
       description: "International bestseller by Paulo Coelho",
@@ -261,7 +261,7 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
       reviews: 1567,
       categoryId: 6,
       variants: [
-        ProductVariant(type: "format", options: ["Paperback", "Hardcover", "eBook"])
+        ProductModelVariant(type: "format", options: ["Paperback", "Hardcover", "eBook"])
       ],
       inStock: true,
       brand: "HarperCollins",

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/product.dart';
+import '../models/product_model.dart';
 import '../widgets/product_card.dart';
 import '../theme/app_theme.dart';
 import 'product_detail_screen.dart';
@@ -13,8 +13,8 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
-  List<Product> _allProducts = [];
-  List<Product> _searchResults = [];
+  List<ProductModel> _allProducts = [];
+  List<ProductModel> _searchResults = [];
   List<String> _recentSearches = [];
   bool _isSearching = false;
 
@@ -27,7 +27,7 @@ class _SearchScreenState extends State<SearchScreen> {
   void _loadSampleProducts() {
     // Sample product list - replace with your real data source
     _allProducts = [
-      Product(
+      ProductModel(
         id: 101,
         name: "iPhone 15 Pro Max",
         description: "Latest smartphone with Titanium design.",
@@ -40,16 +40,16 @@ class _SearchScreenState extends State<SearchScreen> {
         reviews: 1234,
         categoryId: 1,
         variants: [
-          ProductVariant(
+          ProductModelVariant(
             type: "color",
             options: ["Natural Titanium", "Blue", "White", "Black"],
           ),
-          ProductVariant(type: "storage", options: ["128GB", "256GB", "512GB"]),
+          ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB"]),
         ],
         inStock: true,
         brand: "Apple",
       ),
-      Product(
+      ProductModel(
         id: 102,
         name: "Nike Air Max 270",
         description: "Comfortable running shoes.",
@@ -62,11 +62,11 @@ class _SearchScreenState extends State<SearchScreen> {
         reviews: 892,
         categoryId: 2,
         variants: [
-          ProductVariant(
+          ProductModelVariant(
             type: "size",
             options: ["7", "8", "9", "10", "11"],
           ),
-          ProductVariant(
+          ProductModelVariant(
             type: "color",
             options: ["Black", "White", "Navy", "Red"],
           ),

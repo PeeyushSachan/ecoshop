@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
-import '../models/product.dart';
+import '../models/product_model.dart';
 import '../widgets/product_card.dart';
 
 class ProductDetailScreen extends StatefulWidget {
-  final Product product;
+  final ProductModel product;
 
   const ProductDetailScreen({
     Key? key,

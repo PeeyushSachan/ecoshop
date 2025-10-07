@@ -2,7 +2,7 @@
 // File: lib/data/sample_data.dart
 
 import 'package:flutter/material.dart';
-import 'product.dart';
+import 'product_model.dart';
 import '../theme/app_theme.dart';
 
 class Category {
@@ -33,9 +33,9 @@ final int id;
   ];
 
   // Enhanced Product Variants with more realistic options
-  static List<ProductVariant> getSmartphoneVariants() {
+  static List<ProductModelVariant> getSmartphoneVariants() {
     return [
-      ProductVariant(
+      ProductModelVariant(
         type: "color", 
         options: [
           "Natural Titanium", 
@@ -45,24 +45,24 @@ final int id;
           "Gold Titanium"
         ]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "storage", 
         options: ["128GB", "256GB", "512GB", "1TB"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "ram", 
         options: ["8GB", "12GB"]
       ),
     ];
   }
 
-  static List<ProductVariant> getClothingVariants() {
+  static List<ProductModelVariant> getClothingVariants() {
     return [
-      ProductVariant(
+      ProductModelVariant(
         type: "size", 
         options: ["XS", "S", "M", "L", "XL", "XXL", "3XL"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "color", 
         options: [
           "Black", 
@@ -75,20 +75,20 @@ final int id;
           "Pink"
         ]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "fit", 
         options: ["Slim Fit", "Regular Fit", "Relaxed Fit"]
       ),
     ];
   }
 
-  static List<ProductVariant> getShoesVariants() {
+  static List<ProductModelVariant> getShoesVariants() {
     return [
-      ProductVariant(
+      ProductModelVariant(
         type: "size", 
         options: ["6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11", "12"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "color", 
         options: [
           "Black", 
@@ -101,67 +101,67 @@ final int id;
           "Green"
         ]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "width", 
         options: ["Regular", "Wide"]
       ),
     ];
   }
 
-  static List<ProductVariant> getLaptopVariants() {
+  static List<ProductModelVariant> getLaptopVariants() {
     return [
-      ProductVariant(
+      ProductModelVariant(
         type: "processor", 
         options: ["Intel i5", "Intel i7", "Intel i9", "AMD Ryzen 5", "AMD Ryzen 7"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "ram", 
         options: ["8GB", "16GB", "32GB", "64GB"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "storage", 
         options: ["256GB SSD", "512GB SSD", "1TB SSD", "2TB SSD"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "color", 
         options: ["Space Gray", "Silver", "Gold", "Rose Gold"]
       ),
     ];
   }
 
-  static List<ProductVariant> getHeadphonesVariants() {
+  static List<ProductModelVariant> getHeadphonesVariants() {
     return [
-      ProductVariant(
+      ProductModelVariant(
         type: "color", 
         options: ["Black", "White", "Silver", "Blue", "Red"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "connectivity", 
         options: ["Wired", "Wireless", "Both"]
       ),
     ];
   }
 
-  static List<ProductVariant> getFurnitureVariants() {
+  static List<ProductModelVariant> getFurnitureVariants() {
     return [
-      ProductVariant(
+      ProductModelVariant(
         type: "size", 
         options: ["Single", "Double", "Queen", "King", "Super King"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "color", 
         options: ["White", "Oak", "Walnut", "Black", "Cherry", "Pine"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "material", 
         options: ["Wood", "Metal", "Fabric", "Leather", "Plastic"]
       ),
     ];
   }
 
-  static List<ProductVariant> getCosmeticsVariants() {
+  static List<ProductModelVariant> getCosmeticsVariants() {
     return [
-      ProductVariant(
+      ProductModelVariant(
         type: "shade", 
         options: [
           "Fair", 
@@ -176,41 +176,41 @@ final int id;
           "Brown"
         ]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "size", 
         options: ["Travel Size", "Regular", "Large", "Extra Large"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "finish", 
         options: ["Matte", "Glossy", "Satin", "Shimmer"]
       ),
     ];
   }
 
-  static List<ProductVariant> getBooksVariants() {
+  static List<ProductModelVariant> getBooksVariants() {
     return [
-      ProductVariant(
+      ProductModelVariant(
         type: "format", 
         options: ["Paperback", "Hardcover", "eBook", "Audiobook"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "language", 
         options: ["English", "Hindi", "Spanish", "French", "German"]
       ),
     ];
   }
 
-  static List<ProductVariant> getSportsVariants() {
+  static List<ProductModelVariant> getSportsVariants() {
     return [
-      ProductVariant(
+      ProductModelVariant(
         type: "size", 
         options: ["XS", "S", "M", "L", "XL", "XXL"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "color", 
         options: ["Black", "White", "Red", "Blue", "Green", "Yellow"]
       ),
-      ProductVariant(
+      ProductModelVariant(
         type: "weight", 
         options: ["Light", "Medium", "Heavy"]
       ),
@@ -218,7 +218,7 @@ final int id;
   }
 
   // Method to get variants based on category
-  static List<ProductVariant> getVariantsByCategory(int categoryId) {
+  static List<ProductModelVariant> getVariantsByCategory(int categoryId) {
     switch (categoryId) {
       case 1: // Electronics
         return getSmartphoneVariants();
@@ -234,8 +234,8 @@ final int id;
         return getBooksVariants();
       default:
         return [
-          ProductVariant(type: "color", options: ["Black", "White", "Grey"]),
-          ProductVariant(type: "size", options: ["S", "M", "L"]),
+          ProductModelVariant(type: "color", options: ["Black", "White", "Grey"]),
+          ProductModelVariant(type: "size", options: ["S", "M", "L"]),
         ];
     }
   }
@@ -337,7 +337,7 @@ class ProductDetailScreen extends StatefulWidget {
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   Map<String, String> _selectedVariants = {};
 
-  Widget _buildVariantSelector(ProductVariant variant) {
+  Widget _buildVariantSelector(ProductModelVariant variant) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -386,7 +386,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     );
   }
 
-  Widget _buildColorVariants(ProductVariant variant) {
+  Widget _buildColorVariants(ProductModelVariant variant) {
     return Wrap(
       spacing: 12,
       runSpacing: 12,
@@ -434,7 +434,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     );
   }
 
-  Widget _buildSizeVariants(ProductVariant variant) {
+  Widget _buildSizeVariants(ProductModelVariant variant) {
     return Wrap(
       spacing: 8,
       runSpacing: 8,
@@ -472,7 +472,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     );
   }
 
-  Widget _buildDefaultVariants(ProductVariant variant) {
+  Widget _buildDefaultVariants(ProductModelVariant variant) {
     return Wrap(
       spacing: 8,
       runSpacing: 8,

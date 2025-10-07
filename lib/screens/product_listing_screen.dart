@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
-import '../models/product.dart';
+import '../models/product_model.dart';
 import '../widgets/product_card.dart';
 
 class ProductListingScreen extends StatefulWidget {
@@ -27,8 +27,8 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
   bool _isFilterVisible = false;
 
   // Sample products data
-  final List<Product> allProducts = [
-    Product(
+  final List<ProductModel> allProducts = [
+    ProductModel(
       id: 101,
       name: "iPhone 15 Pro Max",
       description: "Latest flagship smartphone with titanium design and advanced camera system",
@@ -42,13 +42,13 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       reviews: 1234,
       categoryId: 1,
       variants: [
-        ProductVariant(type: "color", options: ["Natural Titanium", "Blue Titanium"]),
-        ProductVariant(type: "storage", options: ["128GB", "256GB", "512GB", "1TB"])
+        ProductModelVariant(type: "color", options: ["Natural Titanium", "Blue Titanium"]),
+        ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB", "1TB"])
       ],
       inStock: true,
       brand: "Apple",
     ),
-    Product(
+    ProductModel(
       id: 102,
       name: "Nike Air Max 270",
       description: "Comfortable running shoes with Max Air cushioning",
@@ -62,13 +62,13 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       reviews: 892,
       categoryId: 2,
       variants: [
-        ProductVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
-        ProductVariant(type: "color", options: ["Black", "White", "Navy", "Red"])
+        ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
+        ProductModelVariant(type: "color", options: ["Black", "White", "Navy", "Red"])
       ],
       inStock: true,
       brand: "Nike",
     ),
-    Product(
+    ProductModel(
       id: 103,
       name: "Sony WH-1000XM5",
       description: "Premium noise-canceling wireless headphones",
@@ -82,12 +82,12 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       reviews: 456,
       categoryId: 1,
       variants: [
-        ProductVariant(type: "color", options: ["Black", "Silver"])
+        ProductModelVariant(type: "color", options: ["Black", "Silver"])
       ],
       inStock: true,
       brand: "Sony",
     ),
-    Product(
+    ProductModel(
       id: 104,
       name: "Adidas Ultraboost 22",
       description: "Revolutionary running shoes with boost technology",
@@ -100,13 +100,13 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       reviews: 678,
       categoryId: 2,
       variants: [
-        ProductVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
-        ProductVariant(type: "color", options: ["Black", "White", "Blue"])
+        ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
+        ProductModelVariant(type: "color", options: ["Black", "White", "Blue"])
       ],
       inStock: true,
       brand: "Adidas",
     ),
-    Product(
+    ProductModel(
       id: 105,
       name: "Samsung Galaxy S24 Ultra",
       description: "Flagship Android smartphone with S Pen and AI features",
@@ -119,8 +119,8 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       reviews: 890,
       categoryId: 1,
       variants: [
-        ProductVariant(type: "color", options: ["Titanium Black", "Titanium Gray"]),
-        ProductVariant(type: "storage", options: ["256GB", "512GB", "1TB"])
+        ProductModelVariant(type: "color", options: ["Titanium Black", "Titanium Gray"]),
+        ProductModelVariant(type: "storage", options: ["256GB", "512GB", "1TB"])
       ],
       inStock: true,
       brand: "Samsung",
@@ -131,8 +131,8 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
     return allProducts.map((p) => p.brand ?? '').where((b) => b.isNotEmpty).toSet().toList();
   }
 
-  List<Product> get filteredProducts {
-    List<Product> filtered = List.from(allProducts);
+  List<ProductModel> get filteredProducts {
+    List<ProductModel> filtered = List.from(allProducts);
 
     // Filter by category
     if (widget.categoryId != null) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
-import '../models/product.dart';
+import '../models/product_model.dart';
 import 'category_detail_screen.dart';
 import '../models/category.dart' as cat;
 

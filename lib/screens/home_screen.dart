@@ -4,7 +4,7 @@ import 'cart_screen.dart';
 import 'category_detail_screen.dart';
 import 'search_screen.dart';
 import 'product_detail_screen.dart';
-import '../models/product.dart';
+import '../models/product_model.dart';
 import '../models/category.dart' as cat;
 import '../widgets/product_card.dart';
 import 'product_detail_screen.dart';
@@ -59,8 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
     cat.Category(id: 6, name: "Books & Media", icon: "📚", color: "#3B82F6"),
   ];
 
-  final List<Product> featuredProducts = [
-    Product(
+  final List<ProductModel> featuredProducts = [
+    ProductModel(
       id: 101,
       name: "iPhone 15 Pro Max",
       description: "Latest flagship smartphone with titanium design and advanced camera system",
@@ -74,13 +74,13 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 1234,
       categoryId: 1,
       variants: [
-        ProductVariant(type: "color", options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]),
-        ProductVariant(type: "storage", options: ["128GB", "256GB", "512GB", "1TB"])
+        ProductModelVariant(type: "color", options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]),
+        ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB", "1TB"])
       ],
       inStock: true,
       brand: "Apple",
     ),
-    Product(
+    ProductModel(
       id: 102,
       name: "Nike Air Max 270",
       description: "Comfortable running shoes with Max Air cushioning",
@@ -94,13 +94,13 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 892,
       categoryId: 2,
       variants: [
-        ProductVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
-        ProductVariant(type: "color", options: ["Black", "White", "Navy", "Red"])
+        ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
+        ProductModelVariant(type: "color", options: ["Black", "White", "Navy", "Red"])
       ],
       inStock: true,
       brand: "Nike",
     ),
-    Product(
+    ProductModel(
       id: 103,
       name: "MacBook Air M2",
       description: "Lightweight laptop with M2 chip and all-day battery life",
@@ -114,14 +114,14 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 567,
       categoryId: 1,
       variants: [
-        ProductVariant(type: "color", options: ["Space Gray", "Silver", "Gold", "Starlight"]),
-        ProductVariant(type: "memory", options: ["8GB", "16GB", "24GB"]),
-        ProductVariant(type: "storage", options: ["256GB", "512GB", "1TB", "2TB"])
+        ProductModelVariant(type: "color", options: ["Space Gray", "Silver", "Gold", "Starlight"]),
+        ProductModelVariant(type: "memory", options: ["8GB", "16GB", "24GB"]),
+        ProductModelVariant(type: "storage", options: ["256GB", "512GB", "1TB", "2TB"])
       ],
       inStock: true,
       brand: "Apple",
     ),
-    Product(
+    ProductModel(
       id: 104,
       name: "Samsung Galaxy S24",
       description: "Flagship Android smartphone with AI features",
@@ -134,8 +134,8 @@ class _HomeScreenState extends State<HomeScreen> {
       reviews: 890,
       categoryId: 1,
       variants: [
-        ProductVariant(type: "color", options: ["Black", "White", "Purple"]),
-        ProductVariant(type: "storage", options: ["256GB", "512GB"])
+        ProductModelVariant(type: "color", options: ["Black", "White", "Purple"]),
+        ProductModelVariant(type: "storage", options: ["256GB", "512GB"])
       ],
       inStock: true,
       brand: "Samsung",

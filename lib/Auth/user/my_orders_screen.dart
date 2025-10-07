@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
-import '../../models/product.dart';
+import '../../models/product_model.dart';
 import '../../screens/product_detail_screen.dart';
 
 class MyOrdersScreen extends StatefulWidget {
@@ -34,7 +34,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
       deliveryDate: DateTime.now().subtract(const Duration(days: 1)),
       totalAmount: 25999,
       items: [
-        Product(
+        ProductModel(
           id: 101,
           name: "iPhone 15 Pro Max",
           description: "Latest flagship smartphone",
@@ -58,7 +58,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
       deliveryDate: DateTime.now().add(const Duration(days: 1)),
       totalAmount: 12999,
       items: [
-        Product(
+        ProductModel(
           id: 201,
           name: "Nike Air Max 270",
           description: "Comfortable running shoes",
@@ -82,7 +82,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
       deliveryDate: DateTime.now().add(const Duration(days: 3)),
       totalAmount: 15999,
       items: [
-        Product(
+        ProductModel(
           id: 301,
           name: "IKEA Malm Bed Frame",
           description: "Modern wooden bed frame",
@@ -106,7 +106,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
       deliveryDate: null,
       totalAmount: 3999,
       items: [
-        Product(
+        ProductModel(
           id: 204,
           name: "Zara Cotton T-Shirt",
           description: "Premium cotton t-shirt",
@@ -375,7 +375,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
     );
   }
 
-  Widget _buildOrderItem(Product product, OrderItem order) {
+  Widget _buildOrderItem(ProductModel product, OrderItem order) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       child: Row(
@@ -677,7 +677,7 @@ class OrderItem {
   final DateTime orderDate;
   final DateTime? deliveryDate;
   final double totalAmount;
-  final List<Product> items;
+  final List<ProductModel> items;
   final String? trackingNumber;
 
   OrderItem({

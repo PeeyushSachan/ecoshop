@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../models/category.dart' as cat;
-import '../models/product.dart';
+import '../models/product_model.dart';
 import '../widgets/product_card.dart';
 import 'product_detail_screen.dart';
 
@@ -22,12 +22,12 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
   bool _isGridView = true;
   
   // Sample products based on category
-  List<Product> get categoryProducts {
+  List<ProductModel> get categoryProducts {
     // Generate mock products based on category
     switch (widget.category.id) {
       case 1: // Electronics
         return [
-          Product(
+          ProductModel(
             id: 101,
             name: "iPhone 15 Pro Max",
             description: "Latest flagship smartphone with titanium design",
@@ -38,13 +38,13 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             reviews: 1234,
             categoryId: 1,
             variants: [
-              ProductVariant(type: "color", options: ["Natural Titanium", "Blue Titanium"]),
-              ProductVariant(type: "storage", options: ["128GB", "256GB", "512GB"])
+              ProductModelVariant(type: "color", options: ["Natural Titanium", "Blue Titanium"]),
+              ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB"])
             ],
             inStock: true,
             brand: "Apple",
           ),
-          Product(
+          ProductModel(
             id: 102,
             name: "Samsung Galaxy S24 Ultra",
             description: "Flagship Android smartphone with S Pen",
@@ -55,13 +55,13 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             reviews: 890,
             categoryId: 1,
             variants: [
-              ProductVariant(type: "color", options: ["Titanium Black", "Titanium Gray"]),
-              ProductVariant(type: "storage", options: ["256GB", "512GB", "1TB"])
+              ProductModelVariant(type: "color", options: ["Titanium Black", "Titanium Gray"]),
+              ProductModelVariant(type: "storage", options: ["256GB", "512GB", "1TB"])
             ],
             inStock: true,
             brand: "Samsung",
           ),
-          Product(
+          ProductModel(
             id: 103,
             name: "MacBook Air M2",
             description: "Lightweight laptop with M2 chip",
@@ -72,8 +72,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             reviews: 567,
             categoryId: 1,
             variants: [
-              ProductVariant(type: "color", options: ["Space Gray", "Silver", "Gold"]),
-              ProductVariant(type: "memory", options: ["8GB", "16GB", "24GB"])
+              ProductModelVariant(type: "color", options: ["Space Gray", "Silver", "Gold"]),
+              ProductModelVariant(type: "memory", options: ["8GB", "16GB", "24GB"])
             ],
             inStock: true,
             brand: "Apple",
@@ -82,7 +82,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
       
       case 2: // Fashion
         return [
-          Product(
+          ProductModel(
             id: 201,
             name: "Nike Air Max 270",
             description: "Comfortable running shoes with Max Air cushioning",
@@ -93,13 +93,13 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             reviews: 892,
             categoryId: 2,
             variants: [
-              ProductVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
-              ProductVariant(type: "color", options: ["Black", "White", "Navy"])
+              ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
+              ProductModelVariant(type: "color", options: ["Black", "White", "Navy"])
             ],
             inStock: true,
             brand: "Nike",
           ),
-          Product(
+          ProductModel(
             id: 202,
             name: "Levi's 501 Original Jeans",
             description: "Classic straight-leg jeans with authentic vintage fit",
@@ -110,13 +110,13 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             reviews: 2134,
             categoryId: 2,
             variants: [
-              ProductVariant(type: "size", options: ["28", "30", "32", "34", "36"]),
-              ProductVariant(type: "color", options: ["Dark Blue", "Light Blue", "Black"])
+              ProductModelVariant(type: "size", options: ["28", "30", "32", "34", "36"]),
+              ProductModelVariant(type: "color", options: ["Dark Blue", "Light Blue", "Black"])
             ],
             inStock: true,
             brand: "Levi's",
           ),
-          Product(
+          ProductModel(
             id: 203,
             name: "Adidas Ultraboost 22",
             description: "Revolutionary running shoes with boost technology",
@@ -127,8 +127,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             reviews: 678,
             categoryId: 2,
             variants: [
-              ProductVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
-              ProductVariant(type: "color", options: ["Black", "White", "Blue"])
+              ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
+              ProductModelVariant(type: "color", options: ["Black", "White", "Blue"])
             ],
             inStock: true,
             brand: "Adidas",
@@ -137,7 +137,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
       
       default:
         // Generate generic products for other categories
-        return List.generate(6, (index) => Product(
+        return List.generate(6, (index) => ProductModel(
           id: (widget.category.id * 100) + index,
           name: "${widget.category.name} Product ${index + 1}",
           description: "High-quality ${widget.category.name.toLowerCase()} product with premium features",
@@ -148,8 +148,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
           reviews: (index + 1) * 50 + 20,
           categoryId: widget.category.id,
           variants: [
-            ProductVariant(type: "color", options: ["Black", "White", "Blue"]),
-            ProductVariant(type: "size", options: ["S", "M", "L", "XL"])
+            ProductModelVariant(type: "color", options: ["Black", "White", "Blue"]),
+            ProductModelVariant(type: "size", options: ["S", "M", "L", "XL"])
           ],
           inStock: true,
           brand: "Brand ${String.fromCharCode(65 + index)}",
@@ -157,8 +157,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
     }
   }
 
-  List<Product> get sortedProducts {
-    List<Product> products = List.from(categoryProducts);
+  List<ProductModel> get sortedProducts {
+    List<ProductModel> products = List.from(categoryProducts);
     
     switch (_sortBy) {
       case 'price_low':
@@ -378,7 +378,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
     );
   }
 
-  Widget _buildProductsGrid(List<Product> products) {
+  Widget _buildProductsGrid(List<ProductModel> products) {
     return SliverGrid(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -415,7 +415,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
     );
   }
 
-  Widget _buildProductsList(List<Product> products) {
+  Widget _buildProductsList(List<ProductModel> products) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {

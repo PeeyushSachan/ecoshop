@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
-import '../models/product.dart';
+import '../models/product_model.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class _CartScreenState extends State<CartScreen> {
   // Sample cart items
   List<CartItemData> cartItems = [
     CartItemData(
-      product: Product(
+      product: ProductModel(
         id: 101,
         name: "iPhone 15 Pro Max",
         description: "Latest flagship smartphone",
@@ -28,8 +28,8 @@ class _CartScreenState extends State<CartScreen> {
         reviews: 1234,
         categoryId: 1,
         variants: [
-          ProductVariant(type: "color", options: ["Natural Titanium"]),
-          ProductVariant(type: "storage", options: ["256GB"])
+          ProductModelVariant(type: "color", options: ["Natural Titanium"]),
+          ProductModelVariant(type: "storage", options: ["256GB"])
         ],
         inStock: true,
         brand: "Apple",
@@ -38,7 +38,7 @@ class _CartScreenState extends State<CartScreen> {
       selectedVariants: {"color": "Natural Titanium", "storage": "256GB"},
     ),
     CartItemData(
-      product: Product(
+      product: ProductModel(
         id: 102,
         name: "Nike Air Max 270",
         description: "Comfortable running shoes",
@@ -49,8 +49,8 @@ class _CartScreenState extends State<CartScreen> {
         reviews: 892,
         categoryId: 2,
         variants: [
-          ProductVariant(type: "size", options: ["9"]),
-          ProductVariant(type: "color", options: ["Black"])
+          ProductModelVariant(type: "size", options: ["9"]),
+          ProductModelVariant(type: "color", options: ["Black"])
         ],
         inStock: true,
         brand: "Nike",
@@ -727,7 +727,7 @@ class _CartScreenState extends State<CartScreen> {
 }
 
 class CartItemData {
-  final Product product;
+  final ProductModel product;
   int quantity;
   final Map<String, String> selectedVariants;
 

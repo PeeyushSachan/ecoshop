@@ -1,61 +1,49 @@
+import 'package:ecoshop/models/product_model.dart';
+import 'package:ecoshop/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-
-import '../models/category.dart';
 
 class CategoryCard extends StatelessWidget {
   final Category category;
   final VoidCallback? onTap;
 
-  const CategoryCard({Key? key, required this.category, this.onTap}) : super(key: key);
+  const CategoryCard({
+    Key? key,
+    required this.category,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Parse hex color string to Color
-    Color categoryColor = Colors.grey; // default fallback
-    try {
-      categoryColor = Color(int.parse(category.color.replaceFirst('#', '0xFF')));
-    } catch (e) {
-      print('Invalid color for ${category.name}: $e');
-    }
-
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 100,
-        margin: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: categoryColor.withOpacity(0.1),
+          color: AppTheme.surfaceColor,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: categoryColor.withOpacity(0.2),
-              blurRadius: 4,
-              offset: Offset(0, 2),
-            ),
-          ],
+          border: Border.all(
+            color: Color(int.parse(category.color.replaceFirst('#', '0xFF')))
+                .withOpacity(0.3),
+          ),
         ),
-        padding: EdgeInsets.symmetric(vertical: 16),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: 25,
-              backgroundColor: categoryColor,
-              child: Text(
-                category.icon,
-                style: TextStyle(
-                  fontSize: 24,
-                ),
-              ),
+            Text(
+              category.icon,
+              style: const TextStyle(fontSize: 32),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               category.name,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
+              style: const TextStyle(
+                color: AppTheme.textPrimary,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
               ),
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),

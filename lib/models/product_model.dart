@@ -1,4 +1,4 @@
-class Product {
+class ProductModel {
   final int id;
   final String name;
   final String description;
@@ -8,12 +8,12 @@ class Product {
   final double rating;
   final int reviews;
   final int categoryId;
-  final List<ProductVariant> variants;
+  final List<ProductModelVariant> variants;
   final bool inStock;
   final String? brand;
   final List<String>? tags;
 
-  Product({
+  ProductModel({
     required this.id,
     required this.name,
     required this.description,
@@ -38,8 +38,8 @@ class Product {
   String get formattedMrp => '₹${mrp.toStringAsFixed(0)}';
   String get formattedDiscount => '${discountPercentage.toStringAsFixed(0)}% OFF';
 
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
       id: json['id'],
       name: json['name'],
       description: json['description'],
@@ -50,7 +50,7 @@ class Product {
       reviews: json['reviews'],
       categoryId: json['category_id'],
       variants: (json['variants'] as List)
-          .map((v) => ProductVariant.fromJson(v))
+          .map((v) => ProductModelVariant.fromJson(v))
           .toList(),
       inStock: json['in_stock'],
       brand: json['brand'],
@@ -77,17 +77,17 @@ class Product {
   }
 }
 
-class ProductVariant {
+class ProductModelVariant {
   final String type;
   final List<String> options;
 
-  ProductVariant({
+  ProductModelVariant({
     required this.type,
     required this.options,
   });
 
-  factory ProductVariant.fromJson(Map<String, dynamic> json) {
-    return ProductVariant(
+  factory ProductModelVariant.fromJson(Map<String, dynamic> json) {
+    return ProductModelVariant(
       type: json['type'],
       options: List<String>.from(json['options']),
     );
@@ -138,19 +138,19 @@ class Category {
 }
 
 class CartItem {
-  final int productId;
+  final int productMProductModelId;
   int quantity;
   final Map<String, String> selectedVariants;
 
   CartItem({
-    required this.productId,
+    required this.productMProductModelId,
     required this.quantity,
     required this.selectedVariants,
   });
 
   factory CartItem.fromJson(Map<String, dynamic> json) {
     return CartItem(
-      productId: json['product_id'],
+      productMProductModelId: json['productMProductModel_id'],
       quantity: json['quantity'],
       selectedVariants: Map<String, String>.from(json['selected_variants']),
     );
@@ -158,7 +158,7 @@ class CartItem {
 
   Map<String, dynamic> toJson() {
     return {
-      'product_id': productId,
+      'productMProductModel_id': productMProductModelId,
       'quantity': quantity,
       'selected_variants': selectedVariants,
     };
