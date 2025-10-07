@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 import '../../models/product_model.dart';
+import '../../models/user_profile_model.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final UserProfile user = UserProfile(
+  final UserProfileModel user = UserProfileModel(
     name: "John Doe",
     email: "john.doe@example.com",
     phone: "+91 98765 43210",

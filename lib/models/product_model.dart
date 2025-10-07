@@ -102,146 +102,42 @@ class ProductModelVariant {
   }
 }
 
-class Category {
-  final int id;
-  final String name;
-  final String icon;
-  final String color;
-  final String? image;
+// class Category {
+//   final int id;
+//   final String name;
+//   final String icon;
+//   final String color;
+//   final String? image;
 
-  Category({
-    required this.id,
-    required this.name,
-    required this.icon,
-    required this.color,
-    this.image,
-  });
+//   Category({
+//     required this.id,
+//     required this.name,
+//     required this.icon,
+//     required this.color,
+//     this.image,
+//   });
 
-  factory Category.fromJson(Map<String, dynamic> json) {
-    return Category(
-      id: json['id'],
-      name: json['name'],
-      icon: json['icon'],
-      color: json['color'],
-      image: json['image'],
-    );
-  }
+//   factory Category.fromJson(Map<String, dynamic> json) {
+//     return Category(
+//       id: json['id'],
+//       name: json['name'],
+//       icon: json['icon'],
+//       color: json['color'],
+//       image: json['image'],
+//     );
+//   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'icon': icon,
-      'color': color,
-      'image': image,
-    };
-  }
-}
+//   Map<String, dynamic> toJson() {
+//     return {
+//       'id': id,
+//       'name': name,
+//       'icon': icon,
+//       'color': color,
+//       'image': image,
+//     };
+//   }
+// }
 
-class CartItem {
-  final int productMProductModelId;
-  int quantity;
-  final Map<String, String> selectedVariants;
 
-  CartItem({
-    required this.productMProductModelId,
-    required this.quantity,
-    required this.selectedVariants,
-  });
 
-  factory CartItem.fromJson(Map<String, dynamic> json) {
-    return CartItem(
-      productMProductModelId: json['productMProductModel_id'],
-      quantity: json['quantity'],
-      selectedVariants: Map<String, String>.from(json['selected_variants']),
-    );
-  }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'productMProductModel_id': productMProductModelId,
-      'quantity': quantity,
-      'selected_variants': selectedVariants,
-    };
-  }
-}
-
-class Banner {
-  final int id;
-  final String title;
-  final String subtitle;
-  final String image;
-  final String link;
-  final String? buttonText;
-
-  Banner({
-    required this.id,
-    required this.title,
-    required this.subtitle,
-    required this.image,
-    required this.link,
-    this.buttonText,
-  });
-
-  factory Banner.fromJson(Map<String, dynamic> json) {
-    return Banner(
-      id: json['id'],
-      title: json['title'],
-      subtitle: json['subtitle'],
-      image: json['image'],
-      link: json['link'],
-      buttonText: json['button_text'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'title': title,
-      'subtitle': subtitle,
-      'image': image,
-      'link': link,
-      'button_text': buttonText,
-    };
-  }
-}
-
-class UserProfile {
-  final String name;
-  final String email;
-  final String? phone;
-  final String? avatar;
-  final int orders;
-  final int wishlist;
-
-  UserProfile({
-    required this.name,
-    required this.email,
-    this.phone,
-    this.avatar,
-    required this.orders,
-    required this.wishlist,
-  });
-
-  factory UserProfile.fromJson(Map<String, dynamic> json) {
-    return UserProfile(
-      name: json['name'],
-      email: json['email'],
-      phone: json['phone'],
-      avatar: json['avatar'],
-      orders: json['orders'],
-      wishlist: json['wishlist'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'email': email,
-      'phone': phone,
-      'avatar': avatar,
-      'orders': orders,
-      'wishlist': wishlist,
-    };
-  }
-}

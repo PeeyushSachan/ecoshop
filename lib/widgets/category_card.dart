@@ -1,4 +1,4 @@
-import 'package:ecoshop/models/product_model.dart';
+import 'package:ecoshop/models/category.dart';
 import 'package:ecoshop/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
