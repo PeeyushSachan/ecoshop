@@ -1,3 +1,5 @@
+import 'package:ecoshop/models/product_variant_model.dart';
+import 'package:ecoshop/models/variant_option_model.dart';
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../models/product_model.dart';
@@ -18,255 +20,449 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
   List<ProductModel> _filteredProducts = [];
 
   // All Products Data
+
   final List<ProductModel> allProducts = [
-    // Electronics
-    ProductModel(
-      id: 101,
-      name: "iPhone 15 Pro Max",
-      description: "Latest flagship smartphone with titanium design and advanced camera system",
-      images: ["https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400"],
-      price: 89999,
-      mrp: 99999,
-      rating: 4.8,
-      reviews: 1234,
-      categoryId: 1,
-      variants: [
-        ProductModelVariant(type: "color", options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]),
-        ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB", "1TB"])
-      ],
-      inStock: true,
-      brand: "Apple",
-    ),
-    ProductModel(
-      id: 102,
-      name: "Samsung Galaxy S24 Ultra",
-      description: "Flagship Android smartphone with S Pen and AI features",
-      images: ["https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400"],
-      price: 79999,
-      mrp: 89999,
-      rating: 4.6,
-      reviews: 890,
-      categoryId: 1,
-      variants: [
-        ProductModelVariant(type: "color", options: ["Titanium Black", "Titanium Gray", "Titanium Violet"]),
-        ProductModelVariant(type: "storage", options: ["256GB", "512GB", "1TB"])
-      ],
-      inStock: true,
-      brand: "Samsung",
-    ),
-    ProductModel(
-      id: 103,
-      name: "MacBook Air M2",
-      description: "Lightweight laptop with M2 chip and all-day battery life",
-      images: ["https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400"],
-      price: 94999,
-      mrp: 104999,
-      rating: 4.9,
-      reviews: 567,
-      categoryId: 1,
-      variants: [
-        ProductModelVariant(type: "color", options: ["Space Gray", "Silver", "Gold", "Starlight"]),
-        ProductModelVariant(type: "memory", options: ["8GB", "16GB", "24GB"]),
-        ProductModelVariant(type: "storage", options: ["256GB", "512GB", "1TB", "2TB"])
-      ],
-      inStock: true,
-      brand: "Apple",
-    ),
-    ProductModel (
-      id: 104,
-      name: "iPad Pro 12.9-inch",
-      description: "Most advanced iPad with M2 chip and Liquid Retina XDR display",
-      images: ["https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400"],
-      price: 84999,
-      mrp: 94999,
-      rating: 4.8,
-      reviews: 723,
-      categoryId: 1,
-      variants: [
-        ProductModelVariant(type: "color", options: ["Space Gray", "Silver"]),
-        ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB", "1TB", "2TB"])
-      ],
-      inStock: true,
-      brand: "Apple",
-    ),
-    ProductModel(
-      id: 105,
-      name: "Sony WH-1000XM5",
-      description: "Premium noise-canceling wireless headphones",
-      images: ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"],
-      price: 24990,
-      mrp: 29990,
-      rating: 4.7,
-      reviews: 456,
-      categoryId: 1,
-      variants: [
-        ProductModelVariant(type: "color", options: ["Black", "Silver"])
-      ],
-      inStock: true,
-      brand: "Sony",
-    ),
+  // Electronics
+  ProductModel(
+    id: 101,
+    name: "iPhone 15 Pro Max22",
+    description: "Latest flagship smartphone with titanium design and advanced camera system",
+    images: ["https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400"],
+    price: 89999,
+    mrp: 99999,
+    rating: 4.8,
+    reviews: 1234,
+    categoryId: 1,
+    variants: [
+      ProductVariantModel(
+        type: "color",
+        options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase().replaceAll(' ', '-'),
+                  name: color,
+                ))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "storage",
+        options: ["128GB", "256GB", "512GB", "1TB"]
+            .map((storage) => VariantOption(
+                  id: storage.toLowerCase(),
+                  name: storage,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "Apple",
+  ),
+  ProductModel(
+    id: 102,
+    name: "Samsung Galaxy S24 Ultra",
+    description: "Flagship Android smartphone with S Pen and AI features",
+    images: ["https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400"],
+    price: 79999,
+    mrp: 89999,
+    rating: 4.6,
+    reviews: 890,
+    categoryId: 1,
+    variants: [
+      ProductVariantModel(
+        type: "color",
+        options: ["Titanium Black", "Titanium Gray", "Titanium Violet"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase().replaceAll(' ', '-'),
+                  name: color,
+                ))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "storage",
+        options: ["256GB", "512GB", "1TB"]
+            .map((storage) => VariantOption(
+                  id: storage.toLowerCase(),
+                  name: storage,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "Samsung",
+  ),
+  ProductModel(
+    id: 103,
+    name: "MacBook Air M2",
+    description: "Lightweight laptop with M2 chip and all-day battery life",
+    images: ["https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400"],
+    price: 94999,
+    mrp: 104999,
+    rating: 4.9,
+    reviews: 567,
+    categoryId: 1,
+    variants: [
+      ProductVariantModel(
+        type: "color",
+        options: ["Space Gray", "Silver", "Gold", "Starlight"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase().replaceAll(' ', '-'),
+                  name: color,
+                ))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "memory",
+        options: ["8GB", "16GB", "24GB"]
+            .map((memory) => VariantOption(
+                  id: memory.toLowerCase(),
+                  name: memory,
+                ))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "storage",
+        options: ["256GB", "512GB", "1TB", "2TB"]
+            .map((storage) => VariantOption(
+                  id: storage.toLowerCase(),
+                  name: storage,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "Apple",
+  ),
+  ProductModel(
+    id: 104,
+    name: "iPad Pro 12.9-inch",
+    description: "Most advanced iPad with M2 chip and Liquid Retina XDR display",
+    images: ["https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400"],
+    price: 84999,
+    mrp: 94999,
+    rating: 4.8,
+    reviews: 723,
+    categoryId: 1,
+    variants: [
+      ProductVariantModel(
+        type: "color",
+        options: ["Space Gray", "Silver"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase().replaceAll(' ', '-'),
+                  name: color,
+                ))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "storage",
+        options: ["128GB", "256GB", "512GB", "1TB", "2TB"]
+            .map((storage) => VariantOption(
+                  id: storage.toLowerCase(),
+                  name: storage,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "Apple",
+  ),
+  ProductModel(
+    id: 105,
+    name: "Sony WH-1000XM5",
+    description: "Premium noise-canceling wireless headphones",
+    images: ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"],
+    price: 24990,
+    mrp: 29990,
+    rating: 4.7,
+    reviews: 456,
+    categoryId: 1,
+    variants: [
+      ProductVariantModel(
+        type: "color",
+        options: ["Black", "Silver"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase(),
+                  name: color,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "Sony",
+  ),
 
-    // Fashion
-    ProductModel(
-      id: 201,
-      name: "Nike Air Max 270",
-      description: "Comfortable running shoes with Max Air cushioning technology",
-      images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"],
-      price: 8999,
-      mrp: 12999,
-      rating: 4.6,
-      reviews: 892,
-      categoryId: 2,
-      variants: [
-        ProductModelVariant(type: "size", options: ["7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11"]),
-        ProductModelVariant(type: "color", options: ["Black", "White", "Navy", "Red", "Blue"])
-      ],
-      inStock: true,
-      brand: "Nike",
-    ),
-    ProductModel(
-      id: 202,
-      name: "Adidas Ultraboost 22",
-      description: "Revolutionary running shoes with responsive BOOST cushioning",
-      images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"],
-      price: 12999,
-      mrp: 16999,
-      rating: 4.5,
-      reviews: 678,
-      categoryId: 2,
-      variants: [
-        ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11", "12"]),
-        ProductModelVariant(type: "color", options: ["Black", "White", "Blue", "Red", "Gray"])
-      ],
-      inStock: true,
-      brand: "Adidas",
-    ),
-    ProductModel(
-      id: 203,
-      name: "Levi's 501 Original Jeans",
-      description: "Classic straight-leg jeans with authentic vintage fit",
-      images: ["https://images.unsplash.com/photo-1542272604-787c3835535d?w=400"],
-      price: 3999,
-      mrp: 5999,
-      rating: 4.4,
-      reviews: 2134,
-      categoryId: 2,
-      variants: [
-        ProductModelVariant(type: "size", options: ["28", "30", "32", "34", "36", "38"]),
-        ProductModelVariant(type: "color", options: ["Dark Blue", "Light Blue", "Black", "Gray"])
-      ],
-      inStock: true,
-      brand: "Levi's",
-    ),
-    ProductModel(
-      id: 204,
-      name: "Zara Cotton T-Shirt",
-      description: "Premium cotton t-shirt with modern fit",
-      images: ["https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"],
-      price: 1299,
-      mrp: 1999,
-      rating: 4.2,
-      reviews: 456,
-      categoryId: 2,
-      variants: [
-        ProductModelVariant(type: "size", options: ["XS", "S", "M", "L", "XL", "XXL"]),
-        ProductModelVariant(type: "color", options: ["Black", "White", "Navy", "Gray", "Red"])
-      ],
-      inStock: true,
-      brand: "Zara",
-    ),
+  // Fashion
+  ProductModel(
+    id: 201,
+    name: "Nike Air Max 270",
+    description: "Comfortable running shoes with Max Air cushioning technology",
+    images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"],
+    price: 8999,
+    mrp: 12999,
+    rating: 4.6,
+    reviews: 892,
+    categoryId: 2,
+    variants: [
+      ProductVariantModel(
+        type: "size",
+        options: ["7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11"]
+            .map((size) => VariantOption(id: size, name: size))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "color",
+        options: ["Black", "White", "Navy", "Red", "Blue"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase(),
+                  name: color,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "Nike",
+  ),
+  ProductModel(
+    id: 202,
+    name: "Adidas Ultraboost 22",
+    description: "Revolutionary running shoes with responsive BOOST cushioning",
+    images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"],
+    price: 12999,
+    mrp: 16999,
+    rating: 4.5,
+    reviews: 678,
+    categoryId: 2,
+    variants: [
+      ProductVariantModel(
+        type: "size",
+        options: ["7", "8", "9", "10", "11", "12"]
+            .map((size) => VariantOption(id: size, name: size))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "color",
+        options: ["Black", "White", "Blue", "Red", "Gray"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase(),
+                  name: color,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "Adidas",
+  ),
+  ProductModel(
+    id: 203,
+    name: "Levi's 501 Original Jeans",
+    description: "Classic straight-leg jeans with authentic vintage fit",
+    images: ["https://images.unsplash.com/photo-1542272604-787c3835535d?w=400"],
+    price: 3999,
+    mrp: 5999,
+    rating: 4.4,
+    reviews: 2134,
+    categoryId: 2,
+    variants: [
+      ProductVariantModel(
+        type: "size",
+        options: ["28", "30", "32", "34", "36", "38"]
+            .map((size) => VariantOption(id: size, name: size))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "color",
+        options: ["Dark Blue", "Light Blue", "Black", "Gray"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase().replaceAll(' ', '-'),
+                  name: color,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "Levi's",
+  ),
+  ProductModel(
+    id: 204,
+    name: "Zara Cotton T-Shirt",
+    description: "Premium cotton t-shirt with modern fit",
+    images: ["https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"],
+    price: 1299,
+    mrp: 1999,
+    rating: 4.2,
+    reviews: 456,
+    categoryId: 2,
+    variants: [
+      ProductVariantModel(
+        type: "size",
+        options: ["XS", "S", "M", "L", "XL", "XXL"]
+            .map((size) => VariantOption(id: size.toLowerCase(), name: size))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "color",
+        options: ["Black", "White", "Navy", "Gray", "Red"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase(),
+                  name: color,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "Zara",
+  ),
 
-    // Home & Garden
-    ProductModel(
-      id: 301,
-      name: "IKEA Malm Bed Frame",
-      description: "Modern wooden bed frame with clean lines",
-      images: ["https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400"],
-      price: 12999,
-      mrp: 15999,
-      rating: 4.3,
-      reviews: 234,
-      categoryId: 3,
-      variants: [
-        ProductModelVariant(type: "size", options: ["Single", "Double", "Queen", "King"]),
-        ProductModelVariant(type: "color", options: ["White", "Oak", "Black-Brown"])
-      ],
-      inStock: true,
-      brand: "IKEA",
-    ),
-    ProductModel(
-      id: 302,
-      name: "Philips Air Purifier",
-      description: "Advanced air purification with HEPA filter",
-      images: ["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400"],
-      price: 8999,
-      mrp: 11999,
-      rating: 4.6,
-      reviews: 156,
-      categoryId: 3,
-      variants: [
-        ProductModelVariant(type: "coverage", options: ["Small Room", "Medium Room", "Large Room"]),
-        ProductModelVariant(type: "color", options: ["White", "Black"])
-      ],
-      inStock: true,
-      brand: "Philips",
-    ),
+  // Home & Garden
+  ProductModel(
+    id: 301,
+    name: "IKEA Malm Bed Frame",
+    description: "Modern wooden bed frame with clean lines",
+    images: ["https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400"],
+    price: 12999,
+    mrp: 15999,
+    rating: 4.3,
+    reviews: 234,
+    categoryId: 3,
+    variants: [
+      ProductVariantModel(
+        type: "size",
+        options: ["Single", "Double", "Queen", "King"]
+            .map((size) => VariantOption(id: size.toLowerCase(), name: size))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "color",
+        options: ["White", "Oak", "Black-Brown"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase().replaceAll(' ', '-'),
+                  name: color,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "IKEA",
+  ),
+  ProductModel(
+    id: 302,
+    name: "Philips Air Purifier",
+    description: "Advanced air purification with HEPA filter",
+    images: ["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400"],
+    price: 8999,
+    mrp: 11999,
+    rating: 4.6,
+    reviews: 156,
+    categoryId: 3,
+    variants: [
+      ProductVariantModel(
+        type: "coverage",
+        options: ["Small Room", "Medium Room", "Large Room"]
+            .map((coverage) => VariantOption(
+                  id: coverage.toLowerCase().replaceAll(' ', '-'),
+                  name: coverage,
+                ))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "color",
+        options: ["White", "Black"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase(),
+                  name: color,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "Philips",
+  ),
 
-    // Sports & Fitness
-    ProductModel(
-      id: 401,
-      name: "Yoga Mat Premium",
-      description: "Non-slip yoga mat with superior grip",
-      images: ["https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400"],
-      price: 1999,
-      mrp: 2999,
-      rating: 4.5,
-      reviews: 345,
-      categoryId: 4,
-      variants: [
-        ProductModelVariant(type: "thickness", options: ["4mm", "6mm", "8mm"]),
-        ProductModelVariant(type: "color", options: ["Purple", "Blue", "Green", "Pink"])
-      ],
-      inStock: true,
-      brand: "FitnessPro",
-    ),
+  // Sports & Fitness
+  ProductModel(
+    id: 401,
+    name: "Yoga Mat Premium",
+    description: "Non-slip yoga mat with superior grip",
+    images: ["https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400"],
+    price: 1999,
+    mrp: 2999,
+    rating: 4.5,
+    reviews: 345,
+    categoryId: 4,
+    variants: [
+      ProductVariantModel(
+        type: "thickness",
+        options: ["4mm", "6mm", "8mm"]
+            .map((thickness) => VariantOption(
+                  id: thickness.toLowerCase(),
+                  name: thickness,
+                ))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "color",
+        options: ["Purple", "Blue", "Green", "Pink"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase(),
+                  name: color,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "FitnessPro",
+  ),
 
-    // Beauty & Care
-    ProductModel(
-      id: 501,
-      name: "Lakme Absolute Lipstick",
-      description: "Long-lasting matte lipstick with rich color",
-      images: ["https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400"],
-      price: 799,
-      mrp: 999,
-      rating: 4.3,
-      reviews: 567,
-      categoryId: 5,
-      variants: [
-        ProductModelVariant(type: "shade", options: ["Red Envy", "Pink Crush", "Coral Blush"])
-      ],
-      inStock: true,
-      brand: "Lakme",
-    ),
+  // Beauty & Care
+  ProductModel(
+    id: 501,
+    name: "Lakme Absolute Lipstick",
+    description: "Long-lasting matte lipstick with rich color",
+    images: ["https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400"],
+    price: 799,
+    mrp: 999,
+    rating: 4.3,
+    reviews: 567,
+    categoryId: 5,
+    variants: [
+      ProductVariantModel(
+        type: "shade",
+        options: ["Red Envy", "Pink Crush", "Coral Blush"]
+            .map((shade) => VariantOption(
+                  id: shade.toLowerCase().replaceAll(' ', '-'),
+                  name: shade,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "Lakme",
+  ),
 
-    // Books & Media
-    ProductModel(
-      id: 601,
-      name: "The Alchemist",
-      description: "International bestseller by Paulo Coelho",
-      images: ["https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400"],
-      price: 299,
-      mrp: 399,
-      rating: 4.8,
-      reviews: 1567,
-      categoryId: 6,
-      variants: [
-        ProductModelVariant(type: "format", options: ["Paperback", "Hardcover", "eBook"])
-      ],
-      inStock: true,
-      brand: "HarperCollins",
-    ),
-  ];
+  // Books & Media
+  ProductModel(
+    id: 601,
+    name: "The Alchemist",
+    description: "International bestseller by Paulo Coelho",
+    images: ["https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400"],
+    price: 299,
+    mrp: 399,
+    rating: 4.8,
+    reviews: 1567,
+    categoryId: 6,
+    variants: [
+      ProductVariantModel(
+        type: "format",
+        options: ["Paperback", "Hardcover", "eBook"]
+            .map((format) => VariantOption(
+                  id: format.toLowerCase(),
+                  name: format,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "HarperCollins",
+  ),
+];
 
   // Categories for filter
   final List<String> categories = [
@@ -555,7 +751,7 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => ProductDetailScreen(
-                    product: _filteredProducts[index],
+                    productModel: _filteredProducts[index],
                   ),
                 ),
               );
@@ -756,7 +952,7 @@ class _ViewAllProductsScreenState extends State<ViewAllProductsScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ProductDetailScreen(product: product),
+                            builder: (context) => ProductDetailScreen(productModel: product),
                           ),
                         );
                       },

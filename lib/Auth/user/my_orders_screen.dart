@@ -1,3 +1,4 @@
+import 'package:ecoshop/models/order_item_model.dart';
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 import '../../models/product_model.dart';
@@ -670,23 +671,3 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
   }
 }
 
-// Order Model
-class OrderItem {
-  final String id;
-  final String status;
-  final DateTime orderDate;
-  final DateTime? deliveryDate;
-  final double totalAmount;
-  final List<ProductModel> items;
-  final String? trackingNumber;
-
-  OrderItem({
-    required this.id,
-    required this.status,
-    required this.orderDate,
-    this.deliveryDate,
-    required this.totalAmount,
-    required this.items,
-    this.trackingNumber,
-  });
-}

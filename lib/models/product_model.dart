@@ -1,3 +1,5 @@
+import 'package:ecoshop/models/product_variant_model.dart';
+
 class ProductModel {
   final int id;
   final String name;
@@ -8,7 +10,7 @@ class ProductModel {
   final double rating;
   final int reviews;
   final int categoryId;
-  final List<ProductModelVariant> variants;
+  final List<ProductVariantModel> variants;
   final bool inStock;
   final String? brand;
   final List<String>? tags;
@@ -50,7 +52,7 @@ class ProductModel {
       reviews: json['reviews'],
       categoryId: json['category_id'],
       variants: (json['variants'] as List)
-          .map((v) => ProductModelVariant.fromJson(v))
+          .map((v) => ProductVariantModel.fromJson(v))
           .toList(),
       inStock: json['in_stock'],
       brand: json['brand'],
@@ -76,67 +78,6 @@ class ProductModel {
     };
   }
 }
-
-
-class ProductModelVariant {
-  final String type;
-  final List<String> options;
-
-  ProductModelVariant({
-    required this.type,
-    required this.options,
-  });
-
-  factory ProductModelVariant.fromJson(Map<String, dynamic> json) {
-    return ProductModelVariant(
-      type: json['type'],
-      options: List<String>.from(json['options']),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'type': type,
-      'options': options,
-    };
-  }
-}
-
-// class Category {
-//   final int id;
-//   final String name;
-//   final String icon;
-//   final String color;
-//   final String? image;
-
-//   Category({
-//     required this.id,
-//     required this.name,
-//     required this.icon,
-//     required this.color,
-//     this.image,
-//   });
-
-//   factory Category.fromJson(Map<String, dynamic> json) {
-//     return Category(
-//       id: json['id'],
-//       name: json['name'],
-//       icon: json['icon'],
-//       color: json['color'],
-//       image: json['image'],
-//     );
-//   }
-
-//   Map<String, dynamic> toJson() {
-//     return {
-//       'id': id,
-//       'name': name,
-//       'icon': icon,
-//       'color': color,
-//       'image': image,
-//     };
-//   }
-// }
 
 
 

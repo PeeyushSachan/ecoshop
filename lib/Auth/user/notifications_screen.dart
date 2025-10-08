@@ -1,3 +1,4 @@
+import 'package:ecoshop/models/notification_item_model.dart';
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 
@@ -593,25 +594,3 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
   }
 }
 
-// Notification Item Model
-class NotificationItem {
-  final String id;
-  final String type; // 'order', 'offer', 'account', 'general'
-  final String title;
-  final String message;
-  final DateTime timestamp;
-  bool isRead;
-  final IconData icon;
-  final Color color;
-
-  NotificationItem({
-    required this.id,
-    required this.type,
-    required this.title,
-    required this.message,
-    required this.timestamp,
-    required this.isRead,
-    required this.icon,
-    required this.color,
-  });
-}

@@ -1,3 +1,5 @@
+import 'package:ecoshop/models/product_variant_model.dart';
+import 'package:ecoshop/models/variant_option_model.dart';
 import 'package:flutter/material.dart';
 import '../models/product_model.dart';
 import '../widgets/product_card.dart';
@@ -26,56 +28,76 @@ class _SearchScreenState extends State<SearchScreen> {
 
   void _loadSampleProducts() {
     // Sample product list - replace with your real data source
-    _allProducts = [
-      ProductModel(
-        id: 101,
-        name: "iPhone 15 Pro Max",
-        description: "Latest smartphone with Titanium design.",
-        images: [
-          "https://images.unsplash.com/photo-1592750475338-74b767bb014f?w=400"
-        ],
-        price: 89999,
-        mrp: 99999,
-        rating: 4.8,
-        reviews: 1234,
-        categoryId: 1,
-        variants: [
-          ProductModelVariant(
-            type: "color",
-            options: ["Natural Titanium", "Blue", "White", "Black"],
-          ),
-          ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB"]),
-        ],
-        inStock: true,
-        brand: "Apple",
+_allProducts = [
+  ProductModel(
+    id: 101,
+    name: "iPhone 15 Pro Max",
+    description: "Latest smartphone with Titanium design.",
+    images: [
+      "https://images.unsplash.com/photo-1592750475338-74b767bb014f?w=400"
+    ],
+    price: 89999,
+    mrp: 99999,
+    rating: 4.8,
+    reviews: 1234,
+    categoryId: 1,
+    variants: [
+      ProductVariantModel(
+        type: "color",
+        options: ["Natural Titanium", "Blue", "White", "Black"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase().replaceAll(' ', '-'),
+                  name: color,
+                ))
+            .toList(),
       ),
-      ProductModel(
-        id: 102,
-        name: "Nike Air Max 270",
-        description: "Comfortable running shoes.",
-        images: [
-          "https://images.unsplash.com/photo-1542291026-ec471d1a3f15?w=400"
-        ],
-        price: 8999,
-        mrp: 12999,
-        rating: 4.6,
-        reviews: 892,
-        categoryId: 2,
-        variants: [
-          ProductModelVariant(
-            type: "size",
-            options: ["7", "8", "9", "10", "11"],
-          ),
-          ProductModelVariant(
-            type: "color",
-            options: ["Black", "White", "Navy", "Red"],
-          ),
-        ],
-        inStock: true,
-        brand: "Nike",
+      ProductVariantModel(
+        type: "storage",
+        options: ["128GB", "256GB", "512GB"]
+            .map((storage) => VariantOption(
+                  id: storage.toLowerCase(),
+                  name: storage,
+                ))
+            .toList(),
       ),
-      // Add more sample products as needed
-    ];
+    ],
+    inStock: true,
+    brand: "Apple",
+  ),
+  ProductModel(
+    id: 102,
+    name: "Nike Air Max 270",
+    description: "Comfortable running shoes.",
+    images: [
+      "https://images.unsplash.com/photo-1542291026-ec471d1a3f15?w=400"
+    ],
+    price: 8999,
+    mrp: 12999,
+    rating: 4.6,
+    reviews: 892,
+    categoryId: 2,
+    variants: [
+      ProductVariantModel(
+        type: "size",
+        options: ["7", "8", "9", "10", "11"]
+            .map((size) => VariantOption(id: size, name: size))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "color",
+        options: ["Black", "White", "Navy", "Red"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase(),
+                  name: color,
+                ))
+            .toList(),
+      ),
+    ],
+    inStock: true,
+    brand: "Nike",
+  ),
+  // Add more sample products as needed
+];
   }
 
   void _performSearch(String query) {
@@ -235,7 +257,7 @@ class _SearchScreenState extends State<SearchScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => ProductDetailScreen(product: product),
+                  builder: (_) => ProductDetailScreen(productModel: product),
                 ),
               );
             },

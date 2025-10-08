@@ -1,3 +1,4 @@
+import 'package:ecoshop/models/coupon_offer_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../theme/app_theme.dart';
@@ -784,31 +785,3 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
   }
 }
 
-// Coupon Offer Model
-class CouponOffer {
-  final String id;
-  final String title;
-  final String description;
-  final String discountType; // 'percentage' or 'fixed'
-  final double discountValue;
-  final double minOrderAmount;
-  final double maxDiscountAmount;
-  final DateTime validUntil;
-  final String category;
-  final List<String> termsAndConditions;
-  final bool isActive;
-
-  CouponOffer({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.discountType,
-    required this.discountValue,
-    required this.minOrderAmount,
-    required this.maxDiscountAmount,
-    required this.validUntil,
-    required this.category,
-    required this.termsAndConditions,
-    required this.isActive,
-  });
-}

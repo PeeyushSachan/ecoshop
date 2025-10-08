@@ -3,7 +3,7 @@
 
 
 
-import 'package:ecoshop/models/product_varient_Model.dart';
+import 'package:ecoshop/models/product_variant_model.dart';
 import 'package:ecoshop/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:ecoshop/models/variant_option_model.dart';

@@ -1,3 +1,4 @@
+import 'package:ecoshop/models/payment_method_model.dart';
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 
@@ -862,29 +863,3 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
   }
 }
 
-// Payment Method Model
-class PaymentMethod {
-  final String id;
-  final String type; // 'card', 'upi', 'wallet'
-  final String? cardNumber;
-  final String? holderName;
-  final String? expiryDate;
-  final String? cardType;
-  final String? upiId;
-  final String? walletName;
-  final double? balance;
-  bool isDefault;
-
-  PaymentMethod({
-    required this.id,
-    required this.type,
-    this.cardNumber,
-    this.holderName,
-    this.expiryDate,
-    this.cardType,
-    this.upiId,
-    this.walletName,
-    this.balance,
-    required this.isDefault,
-  });
-}

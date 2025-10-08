@@ -24,8 +24,8 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
       reviews: 1234,
       categoryId: 1,
       variants: [
-        ProductModelVariant(type: "color", options: ["Natural Titanium", "Blue Titanium"]),
-        ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB"])
+        // ProductModelVariant(type: "color", options: ["Natural Titanium", "Blue Titanium"]),
+        // ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB"])
       ],
       inStock: true,
       brand: "Apple",
@@ -41,8 +41,8 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
       reviews: 892,
       categoryId: 2,
       variants: [
-        ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
-        ProductModelVariant(type: "color", options: ["Black", "White", "Navy"])
+        // ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
+        // ProductModelVariant(type: "color", options: ["Black", "White", "Navy"])
       ],
       inStock: true,
       brand: "Nike",
@@ -58,8 +58,8 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
       reviews: 234,
       categoryId: 3,
       variants: [
-        ProductModelVariant(type: "size", options: ["Single", "Double", "Queen"]),
-        ProductModelVariant(type: "color", options: ["White", "Oak", "Black-Brown"])
+        // ProductModelVariant(type: "size", options: ["Single", "Double", "Queen"]),
+        // ProductModelVariant(type: "color", options: ["White", "Oak", "Black-Brown"])
       ],
       inStock: true,
       brand: "IKEA",
@@ -75,7 +75,7 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
       reviews: 567,
       categoryId: 5,
       variants: [
-        ProductModelVariant(type: "shade", options: ["Red Envy", "Pink Crush", "Coral Blush"])
+        // ProductModelVariant(type: "shade", options: ["Red Envy", "Pink Crush", "Coral Blush"])
       ],
       inStock: false,
       brand: "Lakme",
@@ -91,7 +91,7 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
       reviews: 1567,
       categoryId: 6,
       variants: [
-        ProductModelVariant(type: "format", options: ["Paperback", "Hardcover", "eBook"])
+        // ProductModelVariant(type: "format", options: ["Paperback", "Hardcover", "eBook"])
       ],
       inStock: true,
       brand: "HarperCollins",
@@ -367,7 +367,7 @@ class _MyWishlistScreenState extends State<MyWishlistScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ProductDetailScreen(product: product),
+                    builder: (context) => ProductDetailScreen(productModel: product),
                   ),
                 );
               },

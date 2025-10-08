@@ -4,11 +4,11 @@ import '../models/product_model.dart';
 import '../widgets/product_card.dart';
 
 class ProductDetailScreen extends StatefulWidget {
-  final ProductModel product;
+  final ProductModel productModel;
 
   const ProductDetailScreen({
     Key? key,
-    required this.product,
+    required this.productModel,
   }) : super(key: key);
 
   @override
@@ -27,9 +27,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   void initState() {
     super.initState();
     // Initialize selected variants with first option of each variant type
-    for (var variant in widget.product.variants) {
+    for (var variant in widget.productModel.variants) {
       if (variant.options.isNotEmpty) {
-        _selectedVariants[variant.type] = variant.options.first;
+        _selectedVariants[variant.type] = variant.options.first.id;
       }
     }
   }
@@ -60,14 +60,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           _currentImageIndex = index;
                         });
                       },
-                      itemCount: widget.product.images.length,
+                      itemCount: widget.productModel.images.length,
                       itemBuilder: (context, index) {
                         return Container(
                           decoration: const BoxDecoration(
                             color: Colors.white,
                           ),
                           child: Image.network(
-                            widget.product.images[index],
+                            widget.productModel.images[index],
                             fit: BoxFit.contain,
                             errorBuilder: (context, error, stackTrace) {
                               return Container(
@@ -91,8 +91,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       right: 0,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: widget.product.images.map((image) {
-                          int index = widget.product.images.indexOf(image);
+                        children: widget.productModel.images.map((image) {
+                          int index = widget.productModel.images.indexOf(image);
                           return Container(
                             width: 8,
                             height: 8,
@@ -109,7 +109,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     
                     // Discount Badge
-                    if (widget.product.discountPercentage > 0)
+                    if (widget.productModel.discountPercentage > 0)
                       Positioned(
                         top: 60,
                         left: 16,
@@ -120,7 +120,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
-                            widget.product.formattedDiscount,
+                            widget.productModel.formattedDiscount,
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 12,
@@ -169,9 +169,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Product Name and Brand
-                    if (widget.product.brand != null)
+
+
+                    if (widget.productModel.brand != null)
                       Text(
-                        widget.product.brand!,
+                        widget.productModel.brand!,
                         style: const TextStyle(
                           color: AppTheme.accentColor,
                           fontSize: 14,
@@ -180,7 +182,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     const SizedBox(height: 4),
                     Text(
-                      widget.product.name,
+                      widget.productModel.name,
                       style: const TextStyle(
                         color: AppTheme.textPrimary,
                         fontSize: 24,
@@ -208,7 +210,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               ),
                               const SizedBox(width: 4),
                               Text(
-                                widget.product.rating.toString(),
+                                widget.productModel.rating.toString(),
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 14,
@@ -220,7 +222,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          '(${widget.product.reviews} reviews)',
+                          '(${widget.productModel.reviews} reviews)',
                           style: const TextStyle(
                             color: AppTheme.textMuted,
                             fontSize: 14,
@@ -234,7 +236,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     Row(
                       children: [
                         Text(
-                          widget.product.formattedPrice,
+                          widget.productModel.formattedPrice,
                           style: const TextStyle(
                             color: AppTheme.textPrimary,
                             fontSize: 28,
@@ -242,9 +244,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           ),
                         ),
                         const SizedBox(width: 12),
-                        if (widget.product.discountPercentage > 0) ...[
+                        if (widget.productModel.discountPercentage > 0) ...[
                           Text(
-                            widget.product.formattedMrp,
+                            widget.productModel.formattedMrp,
                             style: const TextStyle(
                               color: AppTheme.textMuted,
                               fontSize: 18,
@@ -253,7 +255,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            widget.product.formattedDiscount,
+                            widget.productModel.formattedDiscount,
                             style: const TextStyle(
                               color: AppTheme.successColor,
                               fontSize: 16,
@@ -266,54 +268,56 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     const SizedBox(height: 24),
 
                     // Variants
-                    ...widget.product.variants.map((variant) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            variant.type.toUpperCase(),
-                            style: const TextStyle(
-                              color: AppTheme.textPrimary,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Wrap(
-                            spacing: 8,
-                            runSpacing: 8,
-                            children: variant.options.map((option) {
-                              bool isSelected = _selectedVariants[variant.type] == option;
-                              return GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _selectedVariants[variant.type] = option;
-                                  });
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                                  decoration: BoxDecoration(
-                                    color: isSelected ? AppTheme.accentColor : AppTheme.surfaceColor,
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                      color: isSelected ? AppTheme.accentColor : Colors.transparent,
-                                    ),
-                                  ),
-                                  child: Text(
-                                    option,
-                                    style: TextStyle(
-                                      color: isSelected ? Colors.white : AppTheme.textSecondary,
-                                      fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                          const SizedBox(height: 16),
-                        ],
-                      );
-                    }).toList(),
+...widget.productModel.variants.map((variant) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        variant.label, // Better to use the label getter
+        style: const TextStyle(
+          color: AppTheme.textPrimary,
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      const SizedBox(height: 8),
+      Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: variant.options.map((option) {
+          // FIX 1: Stored ID ko option ki ID se compare karein
+          bool isSelected = _selectedVariants[variant.type] == option.id;
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                _selectedVariants[variant.type] = option.id;
+              });
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                color: isSelected ? AppTheme.accentColor : AppTheme.surfaceColor,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: isSelected ? AppTheme.accentColor : Colors.transparent,
+                ),
+              ),
+              child: Text(
+                // FIX 2: Object ki jagah uski 'label' ya 'name' property dikhayein
+                option.label, // Use .label or .name
+                style: TextStyle(
+                  color: isSelected ? Colors.white : AppTheme.textSecondary,
+                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                ),
+              ),
+            ),
+          );
+        }).toList(),
+      ),
+      const SizedBox(height: 16),
+    ],
+  );
+}).toList(),
 
                     // Quantity Selector
                     Row(
@@ -383,7 +387,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          widget.product.description,
+                          widget.productModel.description,
                           style: const TextStyle(
                             color: AppTheme.textSecondary,
                             fontSize: 14,
@@ -439,11 +443,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   height: 48,
                   margin: const EdgeInsets.only(right: 8),
                   child: OutlinedButton.icon(
-                    onPressed: widget.product.inStock ? () {
+                    onPressed: widget.productModel.inStock ? () {
                       _addToCart();
                     } : null,
                     icon: const Icon(Icons.shopping_cart_outlined),
-                    label: Text(widget.product.inStock ? 'Add to Cart' : 'Out of Stock'),
+                    label: Text(widget.productModel.inStock ? 'Add to Cart' : 'Out of Stock'),
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: AppTheme.accentColor),
                       foregroundColor: AppTheme.accentColor,
@@ -459,7 +463,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   margin: const EdgeInsets.only(left: 8),
                   decoration: AppTheme.primaryButtonDecoration,
                   child: ElevatedButton(
-                    onPressed: widget.product.inStock ? () {
+                    onPressed: widget.productModel.inStock ? () {
                       _buyNow();
                     } : null,
                     style: ElevatedButton.styleFrom(
@@ -490,7 +494,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     // Add to cart logic
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('${widget.product.name} added to cart'),
+        content: Text('${widget.productModel.name} added to cart'),
         backgroundColor: AppTheme.successColor,
         action: SnackBarAction(
           label: 'View Cart',

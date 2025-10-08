@@ -1,3 +1,5 @@
+import 'package:ecoshop/models/product_variant_model.dart';
+import 'package:ecoshop/models/variant_option_model.dart';
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../models/category.dart' as cat;
@@ -5,6 +7,7 @@ import '../models/product_model.dart';
 import '../widgets/product_card.dart';
 import 'product_detail_screen.dart';
 
+import '';
 class CategoryDetailScreen extends StatefulWidget {
   final cat.Category category;
 
@@ -38,122 +41,242 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             reviews: 1234,
             categoryId: 1,
             variants: [
-              ProductModelVariant(type: "color", options: ["Natural Titanium", "Blue Titanium"]),
-              ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB"])
+    
+
+
+            ProductVariantModel(
+  type: "color",
+  options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]
+      .map((color) => VariantOption(
+        // ID ko manually add karein
+        id: "101",
+        name: color,
+      ))
+      .toList(),
+),
+ProductVariantModel(
+  type: "storage",
+  options: ["256GB"]
+      .map((storage) => VariantOption(
+        // Yahan bhi ID add karein
+        id: "101", 
+        name: storage,
+      ))
+      .toList(),
+),
             ],
             inStock: true,
             brand: "Apple",
           ),
-          ProductModel(
-            id: 102,
-            name: "Samsung Galaxy S24 Ultra",
-            description: "Flagship Android smartphone with S Pen",
-            images: ["https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400"],
-            price: 79999,
-            mrp: 89999,
-            rating: 4.6,
-            reviews: 890,
-            categoryId: 1,
-            variants: [
-              ProductModelVariant(type: "color", options: ["Titanium Black", "Titanium Gray"]),
-              ProductModelVariant(type: "storage", options: ["256GB", "512GB", "1TB"])
-            ],
-            inStock: true,
-            brand: "Samsung",
-          ),
-          ProductModel(
-            id: 103,
-            name: "MacBook Air M2",
-            description: "Lightweight laptop with M2 chip",
-            images: ["https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400"],
-            price: 94999,
-            mrp: 104999,
-            rating: 4.9,
-            reviews: 567,
-            categoryId: 1,
-            variants: [
-              ProductModelVariant(type: "color", options: ["Space Gray", "Silver", "Gold"]),
-              ProductModelVariant(type: "memory", options: ["8GB", "16GB", "24GB"])
-            ],
-            inStock: true,
-            brand: "Apple",
-          ),
+ProductModel(
+  id: 102,
+  name: "Samsung Galaxy S24 Ultra",
+  description: "Flagship Android smartphone with S Pen",
+  images: ["https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400"],
+  price: 79999,
+  mrp: 89999,
+  rating: 4.6,
+  reviews: 890,
+  categoryId: 1,
+  variants: [
+    // Color Variant
+    ProductVariantModel(
+      type: "color",
+      options: ["Titanium Black", "Titanium Gray"]
+          .map((color) => VariantOption(
+                id: color.toLowerCase().replaceAll(' ', '-'),
+                name: color,
+              ))
+          .toList(),
+    ),
+    // Storage Variant
+    ProductVariantModel(
+      type: "storage",
+      options: ["256GB", "512GB", "1TB"]
+          .map((storage) => VariantOption(
+                id: storage.toLowerCase(),
+                name: storage,
+              ))
+          .toList(),
+    ),
+  ],
+  inStock: true,
+  brand: "Samsung",
+),
+ProductModel(
+  id: 103,
+  name: "MacBook Air M23",
+  description: "Lightweight laptop with M2 chip",
+  images: ["https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400"],
+  price: 94999,
+  mrp: 104999,
+  rating: 4.9,
+  reviews: 567,
+  categoryId: 1,
+  variants: [
+    ProductVariantModel(
+      type: "color",
+      options: ["Space Gray", "Silver", "Gold"]
+          .map((color) => VariantOption(
+                id: color.toLowerCase().replaceAll(' ', '-'),
+                name: color,
+              ))
+          .toList(),
+    ),
+    ProductVariantModel(
+      type: "memory",
+      options: ["8GB", "16GB", "24GB"]
+          .map((memory) => VariantOption(
+                id: memory.toLowerCase(),
+                name: memory,
+              ))
+          .toList(),
+    ),
+  ],
+  inStock: true,
+  brand: "Apple",
+),
         ];
       
       case 2: // Fashion
         return [
-          ProductModel(
-            id: 201,
-            name: "Nike Air Max 270",
-            description: "Comfortable running shoes with Max Air cushioning",
-            images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"],
-            price: 8999,
-            mrp: 12999,
-            rating: 4.6,
-            reviews: 892,
-            categoryId: 2,
-            variants: [
-              ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
-              ProductModelVariant(type: "color", options: ["Black", "White", "Navy"])
-            ],
-            inStock: true,
-            brand: "Nike",
-          ),
-          ProductModel(
-            id: 202,
-            name: "Levi's 501 Original Jeans",
-            description: "Classic straight-leg jeans with authentic vintage fit",
-            images: ["https://images.unsplash.com/photo-1542272604-787c3835535d?w=400"],
-            price: 3999,
-            mrp: 5999,
-            rating: 4.4,
-            reviews: 2134,
-            categoryId: 2,
-            variants: [
-              ProductModelVariant(type: "size", options: ["28", "30", "32", "34", "36"]),
-              ProductModelVariant(type: "color", options: ["Dark Blue", "Light Blue", "Black"])
-            ],
-            inStock: true,
-            brand: "Levi's",
-          ),
-          ProductModel(
-            id: 203,
-            name: "Adidas Ultraboost 22",
-            description: "Revolutionary running shoes with boost technology",
-            images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"],
-            price: 12999,
-            mrp: 16999,
-            rating: 4.5,
-            reviews: 678,
-            categoryId: 2,
-            variants: [
-              ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
-              ProductModelVariant(type: "color", options: ["Black", "White", "Blue"])
-            ],
-            inStock: true,
-            brand: "Adidas",
-          ),
+ProductModel(
+  id: 201,
+  name: "Nike Air Max 270",
+  description: "Comfortable running shoes with Max Air cushioning",
+  images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"],
+  price: 8999,
+  mrp: 12999,
+  rating: 4.6,
+  reviews: 892,
+  categoryId: 2,
+  variants: [
+    // Size Variant
+    ProductVariantModel(
+      type: "size",
+      options: ["7", "8", "9", "10", "11"]
+          .map((size) => VariantOption(
+                id: size, // For numbers, the value itself can be the ID
+                name: size,
+              ))
+          .toList(),
+    ),
+    // Color Variant
+    ProductVariantModel(
+      type: "color",
+      options: ["Black", "White", "Navy"]
+          .map((color) => VariantOption(
+                id: color.toLowerCase(),
+                name: color,
+              ))
+          .toList(),
+    ),
+  ],
+  inStock: true,
+  brand: "Nike",
+),
+
+
+ProductModel(
+  id: 202,
+  name: "Levi's 501 Original Jeans",
+  description: "Classic straight-leg jeans with authentic vintage fit",
+  images: ["https://images.unsplash.com/photo-1542272604-787c3835535d?w=400"],
+  price: 3999,
+  mrp: 5999,
+  rating: 4.4,
+  reviews: 2134,
+  categoryId: 2,
+  variants: [
+    ProductVariantModel(
+      type: "size",
+      options: ["28", "30", "32", "34", "36"]
+          .map((size) => VariantOption(id: size, name: size))
+          .toList(),
+    ),
+    ProductVariantModel(
+      type: "color",
+      options: ["Dark Blue", "Light Blue", "Black"]
+          .map((color) => VariantOption(
+                id: color.toLowerCase().replaceAll(' ', '-'),
+                name: color,
+              ))
+          .toList(),
+    ),
+  ],
+  inStock: true,
+  brand: "Levi's",
+),
+ProductModel(
+  id: 203,
+  name: "Adidas Ultraboost 22",
+  description: "Revolutionary running shoes with boost technology",
+  images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"],
+  price: 12999,
+  mrp: 16999,
+  rating: 4.5,
+  reviews: 678,
+  categoryId: 2,
+  variants: [
+    ProductVariantModel(
+      type: "size",
+      options: ["7", "8", "9", "10", "11"]
+          .map((size) => VariantOption(id: size, name: size))
+          .toList(),
+    ),
+    ProductVariantModel(
+      type: "color",
+      options: ["Black", "White", "Blue"]
+          .map((color) => VariantOption(
+                id: color.toLowerCase(),
+                name: color,
+              ))
+          .toList(),
+    ),
+  ],
+  inStock: true,
+  brand: "Adidas",
+)
         ];
       
       default:
         // Generate generic products for other categories
         return List.generate(6, (index) => ProductModel(
-          id: (widget.category.id * 100) + index,
-          name: "${widget.category.name} Product ${index + 1}",
-          description: "High-quality ${widget.category.name.toLowerCase()} product with premium features",
-          images: ["https://picsum.photos/400/400?random=${widget.category.id}$index"],
-          price: (index + 1) * 1000 + 999,
-          mrp: (index + 1) * 1200 + 999,
-          rating: 4.0 + (index * 0.1),
-          reviews: (index + 1) * 50 + 20,
-          categoryId: widget.category.id,
-          variants: [
-            ProductModelVariant(type: "color", options: ["Black", "White", "Blue"]),
-            ProductModelVariant(type: "size", options: ["S", "M", "L", "XL"])
-          ],
-          inStock: true,
-          brand: "Brand ${String.fromCharCode(65 + index)}",
-        ));
+  id: (widget.category.id * 100) + index,
+  name: "${widget.category.name} Product ${index + 1}",
+  description: "High-quality ${widget.category.name.toLowerCase()} product with premium features",
+  images: ["https://picsum.photos/400/400?random=${widget.category.id}$index"],
+  price: (index + 1) * 1000 + 999,
+  mrp: (index + 1) * 1200 + 999,
+  rating: 4.0 + (index * 0.1),
+  reviews: (index + 1) * 50 + 20,
+  categoryId: widget.category.id,
+  variants: [
+    ProductVariantModel(
+      type: "color",
+      options: ["Black", "White", "Blue"]
+          .map((color) => VariantOption(
+                id: color.toLowerCase(),
+                name: color,
+              ))
+          .toList(),
+    ),
+    ProductVariantModel(
+      type: "size",
+      options: ["S", "M", "L", "XL"]
+          .map((size) => VariantOption(
+                id: size.toLowerCase(),
+                name: size,
+              ))
+          .toList(),
+    ),
+  ],
+  inStock: true,
+  brand: "Brand ${String.fromCharCode(65 + index)}",
+)
+        
+        
+        );
     }
   }
 
@@ -395,7 +518,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => ProductDetailScreen(
-                    product: products[index],
+                    productModel: products[index],
                   ),
                 ),
               );
@@ -563,7 +686,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ProductDetailScreen(product: product),
+                            builder: (context) => ProductDetailScreen(productModel: product),
                           ),
                         );
                       },

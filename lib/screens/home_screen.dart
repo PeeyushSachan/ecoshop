@@ -1,4 +1,6 @@
 import 'package:ecoshop/models/app_banner_Model.dart';
+import 'package:ecoshop/models/product_variant_model.dart';
+import 'package:ecoshop/models/variant_option_model.dart';
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import 'cart_screen.dart';
@@ -62,88 +64,152 @@ class _HomeScreenState extends State<HomeScreen> {
     cat.Category(id: 6, name: "Books & Media", icon: "📚", color: "#3B82F6"),
   ];
 
-  final List<ProductModel> featuredProducts = [
-    ProductModel(
-      id: 101,
-      name: "iPhone 15 Pro Max",
-      description: "Latest flagship smartphone with titanium design and advanced camera system",
-      images: [
-        "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400",
-        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400"
-      ],
-      price: 89999,
-      mrp: 99999,
-      rating: 4.8,
-      reviews: 1234,
-      categoryId: 1,
-      variants: [
-        ProductModelVariant(type: "color", options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]),
-        ProductModelVariant(type: "storage", options: ["128GB", "256GB", "512GB", "1TB"])
-      ],
-      inStock: true,
-      brand: "Apple",
-    ),
-    ProductModel(
-      id: 102,
-      name: "Nike Air Max 270",
-      description: "Comfortable running shoes with Max Air cushioning",
-      images: [
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",
-        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400"
-      ],
-      price: 8999,
-      mrp: 12999,
-      rating: 4.6,
-      reviews: 892,
-      categoryId: 2,
-      variants: [
-        ProductModelVariant(type: "size", options: ["7", "8", "9", "10", "11"]),
-        ProductModelVariant(type: "color", options: ["Black", "White", "Navy", "Red"])
-      ],
-      inStock: true,
-      brand: "Nike",
-    ),
-    ProductModel(
-      id: 103,
-      name: "MacBook Air M2",
-      description: "Lightweight laptop with M2 chip and all-day battery life",
-      images: [
-        "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400",
-        "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"
-      ],
-      price: 94999,
-      mrp: 104999,
-      rating: 4.9,
-      reviews: 567,
-      categoryId: 1,
-      variants: [
-        ProductModelVariant(type: "color", options: ["Space Gray", "Silver", "Gold", "Starlight"]),
-        ProductModelVariant(type: "memory", options: ["8GB", "16GB", "24GB"]),
-        ProductModelVariant(type: "storage", options: ["256GB", "512GB", "1TB", "2TB"])
-      ],
-      inStock: true,
-      brand: "Apple",
-    ),
-    ProductModel(
-      id: 104,
-      name: "Samsung Galaxy S24",
-      description: "Flagship Android smartphone with AI features",
-      images: [
-        "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400"
-      ],
-      price: 79999,
-      mrp: 89999,
-      rating: 4.6,
-      reviews: 890,
-      categoryId: 1,
-      variants: [
-        ProductModelVariant(type: "color", options: ["Black", "White", "Purple"]),
-        ProductModelVariant(type: "storage", options: ["256GB", "512GB"])
-      ],
-      inStock: true,
-      brand: "Samsung",
-    ),
-  ];
+final List<ProductModel> featuredProducts = [
+  ProductModel(
+    id: 101,
+    name: "iPhone 15 Pro Max",
+    description: "Latest flagship smartphone with titanium design and advanced camera system",
+    images: ["https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400"],
+    price: 89999,
+    mrp: 99999,
+    rating: 4.8,
+    reviews: 1234,
+    categoryId: 1,
+    variants: [
+      ProductVariantModel(
+        type: "color",
+        options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase().replaceAll(' ', '-'),
+                  name: color,
+                ))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "storage",
+        options: ["128GB", "256GB", "512GB", "1TB"]
+            .map((storage) => VariantOption(
+                  id: storage.toLowerCase(),
+                  name: storage,
+                ))
+            .toList(),
+      )
+    ],
+    inStock: true,
+    brand: "Apple",
+  ),
+  ProductModel(
+    id: 102,
+    name: "Nike Air Max 270",
+    description: "Comfortable running shoes with Max Air cushioning",
+    images: [
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400"
+    ],
+    price: 8999,
+    mrp: 12999,
+    rating: 4.6,
+    reviews: 892,
+    categoryId: 2,
+    variants: [
+      ProductVariantModel(
+        type: "size",
+        options: ["7", "8", "9", "10", "11"]
+            .map((size) => VariantOption(id: size, name: size))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "color",
+        options: ["Black", "White", "Navy", "Red"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase(),
+                  name: color,
+                ))
+            .toList(),
+      ),
+    ],
+    inStock: true,
+    brand: "Nike",
+  ),
+  ProductModel(
+    id: 103,
+    name: "MacBook Air M2",
+    description: "Lightweight laptop with M2 chip and all-day battery life",
+    images: [
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400",
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"
+    ],
+    price: 94999,
+    mrp: 104999,
+    rating: 4.9,
+    reviews: 567,
+    categoryId: 1,
+    variants: [
+      ProductVariantModel(
+        type: "color",
+        options: ["Space Gray", "Silver", "Gold", "Starlight"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase().replaceAll(' ', '-'),
+                  name: color,
+                ))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "memory",
+        options: ["8GB", "16GB", "24GB"]
+            .map((memory) => VariantOption(
+                  id: memory.toLowerCase(),
+                  name: memory,
+                ))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "storage",
+        options: ["256GB", "512GB", "1TB", "2TB"]
+            .map((storage) => VariantOption(
+                  id: storage.toLowerCase(),
+                  name: storage,
+                ))
+            .toList(),
+      ),
+    ],
+    inStock: true,
+    brand: "Apple",
+  ),
+  ProductModel(
+    id: 104,
+    name: "Samsung Galaxy S24",
+    description: "Flagship Android smartphone with AI features",
+    images: ["https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400"],
+    price: 79999,
+    mrp: 89999,
+    rating: 4.6,
+    reviews: 890,
+    categoryId: 1,
+    variants: [
+      ProductVariantModel(
+        type: "color",
+        options: ["Black", "White", "Purple"]
+            .map((color) => VariantOption(
+                  id: color.toLowerCase(),
+                  name: color,
+                ))
+            .toList(),
+      ),
+      ProductVariantModel(
+        type: "storage",
+        options: ["256GB", "512GB"]
+            .map((storage) => VariantOption(
+                  id: storage.toLowerCase(),
+                  name: storage,
+                ))
+            .toList(),
+      ),
+    ],
+    inStock: true,
+    brand: "Samsung",
+  ),
+];
 
   @override
   void initState() {
@@ -239,9 +305,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Notifications clicked')),
-                      );
+                      Navigator.pushNamed(context, '/notifications');
                     },
                     icon: const Icon(Icons.notifications_outlined, color: Colors.white),
                   ),
@@ -507,7 +571,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => ProductDetailScreen(
-                                        product: featuredProducts[index],
+                                        productModel: featuredProducts[index],
                                       ),
                                     ),
                                   );

@@ -1,7 +1,9 @@
+import 'package:ecoshop/models/variant_option_model.dart';
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../models/product_model.dart';
 import '../models/cart_model.dart';
+import '../models/product_variant_model.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -29,8 +31,26 @@ class _CartScreenState extends State<CartScreen> {
         reviews: 1234,
         categoryId: 1,
         variants: [
-          ProductModelVariant(type: "color", options: ["Natural Titanium"]),
-          ProductModelVariant(type: "storage", options: ["256GB"])
+ProductVariantModel(
+  type: "color",
+  options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]
+      .map((color) => VariantOption(
+        // ID ko manually add karein
+        id: "101",
+        name: color,
+      ))
+      .toList(),
+),
+ProductVariantModel(
+  type: "storage",
+  options: ["256GB"]
+      .map((storage) => VariantOption(
+        // Yahan bhi ID add karein
+        id: "101", 
+        name: storage,
+      ))
+      .toList(),
+),
         ],
         inStock: true,
         brand: "Apple",
@@ -50,8 +70,14 @@ class _CartScreenState extends State<CartScreen> {
         reviews: 892,
         categoryId: 2,
         variants: [
-          ProductModelVariant(type: "size", options: ["9"]),
-          ProductModelVariant(type: "color", options: ["Black"])
+          ProductVariantModel(
+            type: "size",
+            options: ["9"].map((size) => VariantOption(id: "102", name: size)).toList(),
+          ),
+          ProductVariantModel(
+            type: "color",
+            options: ["Black"].map((color) => VariantOption(id: "102", name: color)).toList(),
+          )
         ],
         inStock: true,
         brand: "Nike",
