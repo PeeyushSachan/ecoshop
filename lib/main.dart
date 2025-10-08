@@ -1,4 +1,5 @@
 import 'package:ecoshop/Auth/login_screen.dart';
+import 'package:ecoshop/screens/banner_sales_screens/mega_sale_screen.dart';
 import 'package:ecoshop/screens/category_screen.dart';
 import 'package:ecoshop/screens/main_navigation.dart';
 import 'package:ecoshop/screens/search_screen.dart';
@@ -24,6 +25,9 @@ import 'Auth/user/support_and_Legal/contact_us_screen.dart' as contactus;
 import 'Auth/user/support_and_Legal/help_center_screen.dart' as helpcenter;
 import 'Auth/user/support_and_Legal/privacy_policy_screen.dart' as privacypolicy;
 import 'Auth/user/support_and_Legal/terms_conditions_screen.dart' as termsconditions;
+import 'screens/flash_sale_screen.dart';
+import 'screens/banner_sales_screens/new_arrivals_screen.dart';
+import 'screens/banner_sales_screens/electronics_fest_screen.dart';
 
 void main() {
   runApp(const EcoShopApp());
@@ -70,6 +74,15 @@ class EcoShopApp extends StatelessWidget {
         '/help-center':(context) => const helpcenter.HelpCenterScreen(),
         '/privacy-policy':(context) => const privacypolicy.PrivacyPolicyScreen(),
         '/terms-and-conditions':(context) => const termsconditions.TermsConditionsScreen(),
+
+
+        //flash sale
+        '/flash-sale': (context) => const FlashSaleScreen(),
+
+//sales events
+         '/mega-sale': (context) => const MegaSaleScreen(),
+ '/new-arrivals': (context) => const NewArrivalsScreen(),  
+ '/electronics-fest': (context) => const ElectronicsFestScreen(),
        
       },
     );

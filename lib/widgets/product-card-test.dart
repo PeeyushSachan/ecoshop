@@ -25,11 +25,10 @@ class ProductCard extends StatelessWidget {
         decoration: AppTheme.cardDecoration,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
           children: [
             // Product Image
             Expanded(
-              flex: 4, // Increased flex for image
+              flex: 3,
               child: Stack(
                 children: [
                   Container(
@@ -50,7 +49,7 @@ class ProductCard extends StatelessWidget {
                             child: const Icon(
                               Icons.image_not_supported,
                               color: AppTheme.textMuted,
-                              size: 30, // Reduced icon size
+                              size: 40,
                             ),
                           );
                         },
@@ -61,19 +60,19 @@ class ProductCard extends StatelessWidget {
                   // Discount Badge
                   if (product.discountPercentage > 0)
                     Positioned(
-                      top: 6, // Reduced padding
-                      left: 6,
+                      top: 8,
+                      left: 8,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2), // Reduced padding
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
                           color: AppTheme.errorColor,
-                          borderRadius: BorderRadius.circular(4), // Smaller radius
+                          borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
                           product.formattedDiscount,
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 9, // Reduced font size
+                            fontSize: 10,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -82,12 +81,12 @@ class ProductCard extends StatelessWidget {
                     
                   // Wishlist Button
                   Positioned(
-                    top: 6, // Reduced padding
-                    right: 6,
+                    top: 8,
+                    right: 8,
                     child: GestureDetector(
                       onTap: onWishlistTap,
                       child: Container(
-                        padding: const EdgeInsets.all(4), // Reduced padding
+                        padding: const EdgeInsets.all(6),
                         decoration: BoxDecoration(
                           color: Colors.black.withOpacity(0.3),
                           shape: BoxShape.circle,
@@ -95,7 +94,7 @@ class ProductCard extends StatelessWidget {
                         child: Icon(
                           isWishlisted ? Icons.favorite : Icons.favorite_border,
                           color: isWishlisted ? AppTheme.errorColor : Colors.white,
-                          size: 16, // Reduced icon size
+                          size: 18,
                         ),
                       ),
                     ),
@@ -105,50 +104,45 @@ class ProductCard extends StatelessWidget {
             ),
             
             // Product Details
-            Flexible( // Changed from Expanded to Flexible
-              flex: 3, // Reduced flex for details
+            Expanded(
+              flex: 2,
               child: Padding(
-                padding: const EdgeInsets.all(8), // Reduced padding
+                padding: const EdgeInsets.all(12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
                   children: [
                     // Product Name
                     Text(
                       product.name,
                       style: const TextStyle(
                         color: AppTheme.textPrimary,
-                        fontSize: 13, // Slightly reduced
+                        fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    const SizedBox(height: 4),
                     
-                    // Conditional spacing and brand
-                    if (product.brand != null) ...[
-                      const SizedBox(height: 2), // Reduced spacing
+                    // Brand (if available)
+                    if (product.brand != null)
                       Text(
                         product.brand!,
                         style: const TextStyle(
                           color: AppTheme.textMuted,
-                          fontSize: 11, // Reduced font size
+                          fontSize: 12,
                         ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                       ),
-                    ],
+                    const SizedBox(height: 8),
                     
-                    const SizedBox(height: 4), // Reduced spacing
-                    
-                    // Rating (Compact version)
+                    // Rating
                     Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1), // Reduced padding
+                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(
                             color: AppTheme.successColor,
-                            borderRadius: BorderRadius.circular(3), // Smaller radius
+                            borderRadius: BorderRadius.circular(4),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -156,67 +150,53 @@ class ProductCard extends StatelessWidget {
                               const Icon(
                                 Icons.star,
                                 color: Colors.white,
-                                size: 10, // Smaller icon
+                                size: 12,
                               ),
-                              const SizedBox(width: 1),
+                              const SizedBox(width: 2),
                               Text(
                                 product.rating.toString(),
                                 style: const TextStyle(
                                   color: Colors.white,
-                                  fontSize: 9, // Smaller font
+                                  fontSize: 10,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        const SizedBox(width: 3),
-                        Flexible( // Added Flexible to prevent overflow
-                          child: Text(
-                            '(${product.reviews})',
-                            style: const TextStyle(
-                              color: AppTheme.textMuted,
-                              fontSize: 9, // Smaller font
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                        const SizedBox(width: 4),
+                        Text(
+                          '(${product.reviews})',
+                          style: const TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 10,
                           ),
                         ),
                       ],
                     ),
+                    const Spacer(),
                     
-                    const SizedBox(height: 6), // Reduced spacing
-                    
-                    // Price (Always at bottom)
+                    // Price
                     Row(
                       children: [
-                        Flexible( // Added Flexible to prevent overflow
-                          child: Text(
-                            product.formattedPrice,
-                            style: const TextStyle(
-                              color: AppTheme.textPrimary,
-                              fontSize: 14, // Slightly reduced
-                              fontWeight: FontWeight.bold,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                        Text(
+                          product.formattedPrice,
+                          style: const TextStyle(
+                            color: AppTheme.textPrimary,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        if (product.discountPercentage > 0) ...[
-                          const SizedBox(width: 4), // Reduced spacing
-                          Flexible( // Added Flexible to prevent overflow
-                            child: Text(
-                              product.formattedMrp,
-                              style: const TextStyle(
-                                color: AppTheme.textMuted,
-                                fontSize: 11, // Reduced font size
-                                decoration: TextDecoration.lineThrough,
-                              ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
+                        const SizedBox(width: 8),
+                        if (product.discountPercentage > 0)
+                          Text(
+                            product.formattedMrp,
+                            style: const TextStyle(
+                              color: AppTheme.textMuted,
+                              fontSize: 12,
+                              decoration: TextDecoration.lineThrough,
                             ),
                           ),
-                        ],
                       ],
                     ),
                   ],
@@ -229,4 +209,6 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
+
+
 

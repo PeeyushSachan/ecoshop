@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
       title: "Mega Sale",
       subtitle: "Up to 70% OFF",
       image: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=800",
-      link: "/sale",
+      link: "/mega-sale",
       buttonText: "Shop Now",
     ),
     AppBannerModel(
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
       title: "Electronics Fest",
       subtitle: "Latest Gadgets",
       image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800",
-      link: "/electronics",
+      link: "/electronics-fest",
       buttonText: "Discover",
     ),
   ];
@@ -366,9 +366,10 @@ final List<ProductModel> featuredProducts = [
                       return AppBannerCard(
                         banner: banners[index],
                         onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Clicked: ${banners[index].title}')),
-                          );
+                          Navigator.pushNamed(context, banners[index].link);
+                          // ScaffoldMessenger.of(context).showSnackBar(
+                          //   SnackBar(content: Text('Clicked: ${banners[index].title}')),
+                          // );
                         },
                       );
                     },
@@ -641,9 +642,7 @@ final List<ProductModel> featuredProducts = [
                                   const SizedBox(height: 12),
                                   ElevatedButton(
                                     onPressed: () {
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(content: Text('Flash Sale clicked')),
-                                      );
+                                      Navigator.pushNamed(context, '/flash-sale');
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,

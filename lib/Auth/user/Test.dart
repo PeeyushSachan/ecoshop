@@ -124,47 +124,17 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
       ],
       trackingNumber: null,
     ),
-    OrderItem(
-      id: "ORD005",
-      status: "processing",
-      orderDate: DateTime.now().subtract(const Duration(hours: 12)),
-      deliveryDate: DateTime.now().add(const Duration(days: 2)),
-      totalAmount: 7999,
-      items: [
-        ProductModel(
-          id: 205,
-          name: "Sony Headphones",
-          description: "Premium noise-canceling headphones",
-          images: ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"],
-          price: 7999,
-          mrp: 9999,
-          rating: 4.5,
-          reviews: 678,
-          categoryId: 1,
-          variants: [],
-          inStock: true,
-          brand: "Sony",
-        ),
-      ],
-      trackingNumber: "TRK789123456",
-    ),
   ];
 
-  // Get filtered orders based on tab index
-  List<OrderItem> getFilteredOrders(int tabIndex) {
-    switch (tabIndex) {
-      case 0: return allOrders; // All Orders
-      case 1: return allOrders.where((order) => order.status == 'processing').toList(); // Processing
-      case 2: return allOrders.where((order) => order.status == 'shipped').toList(); // Shipped
-      case 3: return allOrders.where((order) => order.status == 'delivered').toList(); // Delivered
+  List<OrderItem> get filteredOrders {
+    switch (_tabController.index) {
+      case 0: return allOrders;
+      case 1: return allOrders.where((order) => order.status == 'processing').toList();
+      case 2: return allOrders.where((order) => order.status == 'shipped').toList();
+      case 3: return allOrders.where((order) => order.status == 'delivered').toList();
       default: return allOrders;
     }
   }
-
-  // Get tab counts for display
-  int get processingCount => allOrders.where((order) => order.status == 'processing').length;
-  int get shippedCount => allOrders.where((order) => order.status == 'shipped').length;
-  int get deliveredCount => allOrders.where((order) => order.status == 'delivered').length;
 
   @override
   Widget build(BuildContext context) {
@@ -210,7 +180,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
                 ),
               ),
 
-              // Tab Bar with counts
+              // Tab Bar
               Container(
                 decoration: const BoxDecoration(
                   color: AppTheme.surfaceColor,
@@ -222,26 +192,20 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
                   indicatorColor: AppTheme.accentColor,
                   labelStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
                   unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal, fontSize: 12),
-                  isScrollable: true,
-                  tabs: [
-                    Tab(text: 'All Orders (${allOrders.length})'),
-                    Tab(text: 'Processing ($processingCount)'),
-                    Tab(text: 'Shipped ($shippedCount)'),
-                    Tab(text: 'Delivered ($deliveredCount)'),
+                  tabs: const [
+                    Tab(text: 'All Orders'),
+                    Tab(text: 'Processing'),
+                    Tab(text: 'Shipped'),
+                    Tab(text: 'Delivered'),
                   ],
                 ),
               ),
 
-              // Orders List - Fixed TabBarView
+              // Orders List
               Expanded(
                 child: TabBarView(
                   controller: _tabController,
-                  children: [
-                    _buildOrdersList(0), // All Orders
-                    _buildOrdersList(1), // Processing
-                    _buildOrdersList(2), // Shipped
-                    _buildOrdersList(3), // Delivered
-                  ],
+                  children: List.generate(4, (index) => _buildOrdersList()),
                 ),
               ),
             ],
@@ -251,9 +215,8 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
     );
   }
 
-  // Modified _buildOrdersList to accept tab index
-  Widget _buildOrdersList(int tabIndex) {
-    final orders = getFilteredOrders(tabIndex);
+  Widget _buildOrdersList() {
+    final orders = filteredOrders;
     
     if (orders.isEmpty) {
       return Center(
@@ -267,21 +230,19 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
             ),
             const SizedBox(height: 16),
             Text(
-              _getEmptyStateTitle(tabIndex),
+              'No orders found',
               style: TextStyle(
                 color: Colors.white.withOpacity(0.7),
                 fontSize: 18,
-                fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              _getEmptyStateMessage(tabIndex),
+              'Start shopping to see your orders here',
               style: TextStyle(
                 color: Colors.white.withOpacity(0.5),
                 fontSize: 14,
               ),
-              textAlign: TextAlign.center,
             ),
           ],
         ),
@@ -413,27 +374,6 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
         );
       },
     );
-  }
-
-  // Get appropriate empty state messages
-  String _getEmptyStateTitle(int tabIndex) {
-    switch (tabIndex) {
-      case 0: return 'No orders found';
-      case 1: return 'No processing orders';
-      case 2: return 'No shipped orders';
-      case 3: return 'No delivered orders';
-      default: return 'No orders found';
-    }
-  }
-
-  String _getEmptyStateMessage(int tabIndex) {
-    switch (tabIndex) {
-      case 0: return 'Start shopping to see your orders here';
-      case 1: return 'Orders being processed will appear here';
-      case 2: return 'Orders that are shipped will appear here';
-      case 3: return 'Your delivered orders will appear here';
-      default: return 'Start shopping to see your orders here';
-    }
   }
 
   Widget _buildOrderItem(ProductModel product, OrderItem order) {
@@ -730,3 +670,4 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
     );
   }
 }
+
