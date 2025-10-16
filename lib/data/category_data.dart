@@ -1,10 +1,10 @@
 // IMPROVED CATEGORIES AND PRODUCT VARIANTS
 // File: 
 
-import 'package:ecoshop/models/product_variant_model.dart';
-import 'package:ecoshop/models/variant_option_model.dart';
+import 'package:ecoshop/models/product/product_variant_model.dart';
+import 'package:ecoshop/models/ui/variant_option_model.dart';
 import 'package:flutter/material.dart';
-import '../models/product_model.dart';
+import '../models/product/product_model.dart';
 import '../theme/app_theme.dart';
 
 class CategoryData {

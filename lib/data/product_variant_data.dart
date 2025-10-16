@@ -1,9 +1,9 @@
 // DETAILED PRODUCT VARIANT FIXES & IMPROVEMENTS
 // File: lib/models/product_variant.dart
-import 'package:ecoshop/models/product_variant_model.dart';
+import 'package:ecoshop/models/product/product_variant_model.dart';
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
-import 'package:ecoshop/models/variant_option_model.dart';
+import 'package:ecoshop/models/ui/variant_option_model.dart';
 import 'product_variant_data.dart';
 
 
