@@ -25,9 +25,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
   }
 
   // Sample Notifications Data
-  final List<NotificationItem> allNotifications = [
+  final List<NotificationItemModel> allNotifications = [
     // Order Updates
-    NotificationItem(
+    NotificationItemModel(
       id: "1",
       type: "order",
       title: "Order Delivered Successfully",
@@ -37,7 +37,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
       icon: Icons.check_circle,
       color: AppTheme.successColor,
     ),
-    NotificationItem(
+    NotificationItemModel(
       id: "2",
       type: "order",
       title: "Order Out for Delivery",
@@ -47,7 +47,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
       icon: Icons.local_shipping,
       color: Colors.blue,
     ),
-    NotificationItem(
+    NotificationItemModel(
       id: "3",
       type: "order",
       title: "Order Confirmed",
@@ -59,7 +59,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
     ),
     
     // Offers & Promotions
-    NotificationItem(
+    NotificationItemModel(
       id: "4",
       type: "offer",
       title: "Flash Sale Alert! 🔥",
@@ -69,7 +69,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
       icon: Icons.flash_on,
       color: Colors.orange,
     ),
-    NotificationItem(
+    NotificationItemModel(
       id: "5",
       type: "offer",
       title: "New Coupon Available",
@@ -79,7 +79,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
       icon: Icons.local_offer,
       color: AppTheme.accentColor,
     ),
-    NotificationItem(
+    NotificationItemModel(
       id: "6",
       type: "offer",
       title: "Weekend Special Offer",
@@ -91,7 +91,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
     ),
     
     // Account Updates
-    NotificationItem(
+    NotificationItemModel(
       id: "7",
       type: "account",
       title: "Welcome to EcoShop!",
@@ -101,7 +101,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
       icon: Icons.celebration,
       color: AppTheme.accentColor,
     ),
-    NotificationItem(
+    NotificationItemModel(
       id: "8",
       type: "account",
       title: "Profile Updated",
@@ -113,7 +113,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
     ),
     
     // General Notifications
-    NotificationItem(
+    NotificationItemModel(
       id: "9",
       type: "general",
       title: "App Update Available",
@@ -123,7 +123,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
       icon: Icons.system_update,
       color: Colors.indigo,
     ),
-    NotificationItem(
+    NotificationItemModel(
       id: "10",
       type: "general",
       title: "New Features Added",
@@ -135,16 +135,16 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
     ),
   ];
 
-  List<NotificationItem> get unreadNotifications => 
+  List<NotificationItemModel> get unreadNotifications => 
       allNotifications.where((n) => !n.isRead).toList();
 
-  List<NotificationItem> get orderNotifications => 
+  List<NotificationItemModel> get orderNotifications => 
       allNotifications.where((n) => n.type == 'order').toList();
 
-  List<NotificationItem> get offerNotifications => 
+  List<NotificationItemModel> get offerNotifications => 
       allNotifications.where((n) => n.type == 'offer').toList();
 
-  List<NotificationItem> get otherNotifications => 
+  List<NotificationItemModel> get otherNotifications => 
       allNotifications.where((n) => !['order', 'offer'].contains(n.type)).toList();
 
   @override
@@ -236,7 +236,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
     );
   }
 
-  Widget _buildNotificationsList(List<NotificationItem> notifications) {
+  Widget _buildNotificationsList(List<NotificationItemModel> notifications) {
     if (notifications.isEmpty) {
       return Center(
         child: Column(
@@ -282,7 +282,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
     );
   }
 
-  Widget _buildNotificationCard(NotificationItem notification) {
+  Widget _buildNotificationCard(NotificationItemModel notification) {
     return Dismissible(
       key: Key(notification.id),
       direction: DismissDirection.endToStart,
@@ -543,13 +543,13 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
     }
   }
 
-  void _markAsRead(NotificationItem notification) {
+  void _markAsRead(NotificationItemModel notification) {
     setState(() {
       notification.isRead = true;
     });
   }
 
-  void _markAsUnread(NotificationItem notification) {
+  void _markAsUnread(NotificationItemModel notification) {
     setState(() {
       notification.isRead = false;
     });
@@ -570,7 +570,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with SingleTi
     );
   }
 
-  void _deleteNotification(NotificationItem notification) {
+  void _deleteNotification(NotificationItemModel notification) {
     setState(() {
       allNotifications.removeWhere((n) => n.id == notification.id);
     });

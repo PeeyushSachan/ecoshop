@@ -22,28 +22,28 @@ class ProductVariantsData {
         type: "color",
         displayName: "Color",
         options: [
-          VariantOption(
+          VariantOptionModel(
             id: "natural_titanium",
             name: "Natural Titanium",
             colorHex: "#8C7853",
             available: true,
             stock: 25,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "blue_titanium", 
             name: "Blue Titanium",
             colorHex: "#395B74",
             available: true,
             stock: 18,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "white_titanium",
             name: "White Titanium", 
             colorHex: "#F5F5DC",
             available: true,
             stock: 12,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "black_titanium",
             name: "Black Titanium",
             colorHex: "#1C1C1E",
@@ -56,28 +56,28 @@ class ProductVariantsData {
         type: "storage",
         displayName: "Storage",
         options: [
-          VariantOption(
+          VariantOptionModel(
             id: "128gb",
             name: "128GB",
             priceAdjustment: 0,
             available: true,
             stock: 45,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "256gb",
             name: "256GB",
             priceAdjustment: 10000,
             available: true,
             stock: 32,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "512gb",
             name: "512GB",
             priceAdjustment: 20000,
             available: true,
             stock: 28,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "1tb",
             name: "1TB",
             priceAdjustment: 35000,
@@ -96,43 +96,43 @@ class ProductVariantsData {
         type: "size",
         displayName: "Size (US)",
         options: [
-          VariantOption(id: "7", name: "7", available: true, stock: 8),
-          VariantOption(id: "7.5", name: "7.5", available: true, stock: 5),
-          VariantOption(id: "8", name: "8", available: true, stock: 12),
-          VariantOption(id: "8.5", name: "8.5", available: true, stock: 10),
-          VariantOption(id: "9", name: "9", available: true, stock: 15),
-          VariantOption(id: "9.5", name: "9.5", available: true, stock: 8),
-          VariantOption(id: "10", name: "10", available: true, stock: 6),
-          VariantOption(id: "10.5", name: "10.5", available: false, stock: 0),
-          VariantOption(id: "11", name: "11", available: true, stock: 4),
+          VariantOptionModel(id: "7", name: "7", available: true, stock: 8),
+          VariantOptionModel(id: "7.5", name: "7.5", available: true, stock: 5),
+          VariantOptionModel(id: "8", name: "8", available: true, stock: 12),
+          VariantOptionModel(id: "8.5", name: "8.5", available: true, stock: 10),
+          VariantOptionModel(id: "9", name: "9", available: true, stock: 15),
+          VariantOptionModel(id: "9.5", name: "9.5", available: true, stock: 8),
+          VariantOptionModel(id: "10", name: "10", available: true, stock: 6),
+          VariantOptionModel(id: "10.5", name: "10.5", available: false, stock: 0),
+          VariantOptionModel(id: "11", name: "11", available: true, stock: 4),
         ],
       ),
       ProductVariantModel(
         type: "color",
         displayName: "Color",
         options: [
-          VariantOption(
+          VariantOptionModel(
             id: "black",
             name: "Black",
             colorHex: "#000000",
             available: true,
             stock: 25,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "white", 
             name: "White",
             colorHex: "#FFFFFF",
             available: true,
             stock: 20,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "navy",
             name: "Navy",
             colorHex: "#1B263B",
             available: true,
             stock: 15,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "red",
             name: "Red",
             colorHex: "#DC2626",
@@ -151,28 +151,28 @@ class ProductVariantsData {
         type: "color",
         displayName: "Finish",
         options: [
-          VariantOption(
+          VariantOptionModel(
             id: "space_gray",
             name: "Space Gray",
             colorHex: "#7D7D7D",
             available: true,
             stock: 12,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "silver",
             name: "Silver", 
             colorHex: "#E5E5E7",
             available: true,
             stock: 15,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "gold",
             name: "Gold",
             colorHex: "#FAD5A5",
             available: true,
             stock: 8,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "starlight",
             name: "Starlight",
             colorHex: "#FAF0E6",
@@ -185,21 +185,21 @@ class ProductVariantsData {
         type: "memory",
         displayName: "Unified Memory",
         options: [
-          VariantOption(
+          VariantOptionModel(
             id: "8gb",
             name: "8GB",
             priceAdjustment: 0,
             available: true,
             stock: 20,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "16gb",
             name: "16GB",
             priceAdjustment: 20000,
             available: true,
             stock: 15,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "24gb",
             name: "24GB",
             priceAdjustment: 40000,
@@ -212,28 +212,28 @@ class ProductVariantsData {
         type: "storage",
         displayName: "SSD Storage",
         options: [
-          VariantOption(
+          VariantOptionModel(
             id: "256gb",
             name: "256GB SSD",
             priceAdjustment: 0,
             available: true,
             stock: 25,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "512gb",
             name: "512GB SSD",
             priceAdjustment: 20000,
             available: true,
             stock: 18,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "1tb",
             name: "1TB SSD",
             priceAdjustment: 40000,
             available: true,
             stock: 12,
           ),
-          VariantOption(
+          VariantOptionModel(
             id: "2tb",
             name: "2TB SSD",
             priceAdjustment: 80000,

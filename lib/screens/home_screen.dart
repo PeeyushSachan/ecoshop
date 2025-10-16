@@ -8,7 +8,7 @@ import 'category_detail_screen.dart';
 import 'search_screen.dart';
 import 'product_detail_screen.dart';
 import '../models/product_model.dart';
-import '../models/category.dart' as cat;
+import '../data/category_data.dart' ;
 import '../widgets/product_card.dart';
 import 'product_detail_screen.dart';
 import '../screens/view_all_product_screen.dart';
@@ -55,13 +55,13 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   // Categories
-  final List< cat.Category> categories = [
-    cat.Category(id: 1, name: "Electronics", icon: "📱", color: "#10B981"),
-    cat.Category(id: 2, name: "Fashion", icon: "👕", color: "#8B5CF6"),
-    cat.Category(id: 3, name: "Home & Garden", icon: "🏠", color: "#F59E0B"),
-    cat.Category(id: 4, name: "Sports & Fitness", icon: "⚽", color: "#EF4444"),
-    cat.Category(id: 5, name: "Beauty & Care", icon: "💄", color: "#EC4899"),
-    cat.Category(id: 6, name: "Books & Media", icon: "📚", color: "#3B82F6"),
+  final List<CategoryData> categories = [
+    CategoryData(id: 1, name: "Electronics", icon: "📱", color: "#10B981"),
+    CategoryData(id: 2, name: "Fashion", icon: "👕", color: "#8B5CF6"),
+    CategoryData(id: 3, name: "Home & Garden", icon: "🏠", color: "#F59E0B"),
+    CategoryData(id: 4, name: "Sports & Fitness", icon: "⚽", color: "#EF4444"),
+    CategoryData(id: 5, name: "Beauty & Care", icon: "💄", color: "#EC4899"),
+    CategoryData(id: 6, name: "Books & Media", icon: "📚", color: "#3B82F6"),
   ];
 
 final List<ProductModel> featuredProducts = [
@@ -79,7 +79,7 @@ final List<ProductModel> featuredProducts = [
       ProductVariantModel(
         type: "color",
         options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]
-            .map((color) => VariantOption(
+            .map((color) => VariantOptionModel(
                   id: color.toLowerCase().replaceAll(' ', '-'),
                   name: color,
                 ))
@@ -88,7 +88,7 @@ final List<ProductModel> featuredProducts = [
       ProductVariantModel(
         type: "storage",
         options: ["128GB", "256GB", "512GB", "1TB"]
-            .map((storage) => VariantOption(
+            .map((storage) => VariantOptionModel(
                   id: storage.toLowerCase(),
                   name: storage,
                 ))
@@ -115,13 +115,13 @@ final List<ProductModel> featuredProducts = [
       ProductVariantModel(
         type: "size",
         options: ["7", "8", "9", "10", "11"]
-            .map((size) => VariantOption(id: size, name: size))
+            .map((size) => VariantOptionModel(id: size, name: size))
             .toList(),
       ),
       ProductVariantModel(
         type: "color",
         options: ["Black", "White", "Navy", "Red"]
-            .map((color) => VariantOption(
+            .map((color) => VariantOptionModel(
                   id: color.toLowerCase(),
                   name: color,
                 ))
@@ -148,7 +148,7 @@ final List<ProductModel> featuredProducts = [
       ProductVariantModel(
         type: "color",
         options: ["Space Gray", "Silver", "Gold", "Starlight"]
-            .map((color) => VariantOption(
+            .map((color) => VariantOptionModel(
                   id: color.toLowerCase().replaceAll(' ', '-'),
                   name: color,
                 ))
@@ -157,7 +157,7 @@ final List<ProductModel> featuredProducts = [
       ProductVariantModel(
         type: "memory",
         options: ["8GB", "16GB", "24GB"]
-            .map((memory) => VariantOption(
+            .map((memory) => VariantOptionModel(
                   id: memory.toLowerCase(),
                   name: memory,
                 ))
@@ -166,7 +166,7 @@ final List<ProductModel> featuredProducts = [
       ProductVariantModel(
         type: "storage",
         options: ["256GB", "512GB", "1TB", "2TB"]
-            .map((storage) => VariantOption(
+            .map((storage) => VariantOptionModel(
                   id: storage.toLowerCase(),
                   name: storage,
                 ))
@@ -190,7 +190,7 @@ final List<ProductModel> featuredProducts = [
       ProductVariantModel(
         type: "color",
         options: ["Black", "White", "Purple"]
-            .map((color) => VariantOption(
+            .map((color) => VariantOptionModel(
                   id: color.toLowerCase(),
                   name: color,
                 ))
@@ -199,7 +199,7 @@ final List<ProductModel> featuredProducts = [
       ProductVariantModel(
         type: "storage",
         options: ["256GB", "512GB"]
-            .map((storage) => VariantOption(
+            .map((storage) => VariantOptionModel(
                   id: storage.toLowerCase(),
                   name: storage,
                 ))

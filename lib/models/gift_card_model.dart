@@ -1,5 +1,5 @@
 // Gift Card Model
-class GiftCard {
+class GiftCardModel {
   final String id;
   final String brand;
   final double value;
@@ -15,7 +15,7 @@ class GiftCard {
   final String? recipientName;
   final String? recipientEmail;
 
-  GiftCard({
+  GiftCardModel({
     required this.id,
     required this.brand,
     required this.value,

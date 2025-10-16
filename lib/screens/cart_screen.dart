@@ -34,7 +34,7 @@ class _CartScreenState extends State<CartScreen> {
 ProductVariantModel(
   type: "color",
   options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]
-      .map((color) => VariantOption(
+      .map((color) => VariantOptionModel(
         // ID ko manually add karein
         id: "101",
         name: color,
@@ -44,7 +44,7 @@ ProductVariantModel(
 ProductVariantModel(
   type: "storage",
   options: ["256GB"]
-      .map((storage) => VariantOption(
+      .map((storage) => VariantOptionModel(
         // Yahan bhi ID add karein
         id: "101", 
         name: storage,
@@ -72,11 +72,11 @@ ProductVariantModel(
         variants: [
           ProductVariantModel(
             type: "size",
-            options: ["9"].map((size) => VariantOption(id: "102", name: size)).toList(),
+            options: ["9"].map((size) => VariantOptionModel(id: "102", name: size)).toList(),
           ),
           ProductVariantModel(
             type: "color",
-            options: ["Black"].map((color) => VariantOption(id: "102", name: color)).toList(),
+            options: ["Black"].map((color) => VariantOptionModel(id: "102", name: color)).toList(),
           )
         ],
         inStock: true,

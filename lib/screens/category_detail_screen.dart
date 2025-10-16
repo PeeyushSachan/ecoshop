@@ -2,14 +2,14 @@ import 'package:ecoshop/models/product_variant_model.dart';
 import 'package:ecoshop/models/variant_option_model.dart';
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
-import '../models/category.dart' as cat;
+import '../data/category_data.dart' ;
 import '../models/product_model.dart';
 import '../widgets/product_card.dart';
 import 'product_detail_screen.dart';
 
-import '';
+import '../data/category_data.dart';
 class CategoryDetailScreen extends StatefulWidget {
-  final cat.Category category;
+  final CategoryData category;
 
   const CategoryDetailScreen({
     Key? key,
@@ -47,7 +47,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             ProductVariantModel(
   type: "color",
   options: ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"]
-      .map((color) => VariantOption(
+      .map((color) => VariantOptionModel(
         // ID ko manually add karein
         id: "101",
         name: color,
@@ -57,7 +57,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
 ProductVariantModel(
   type: "storage",
   options: ["256GB"]
-      .map((storage) => VariantOption(
+      .map((storage) => VariantOptionModel(
         // Yahan bhi ID add karein
         id: "101", 
         name: storage,
@@ -83,7 +83,7 @@ ProductModel(
     ProductVariantModel(
       type: "color",
       options: ["Titanium Black", "Titanium Gray"]
-          .map((color) => VariantOption(
+          .map((color) => VariantOptionModel(
                 id: color.toLowerCase().replaceAll(' ', '-'),
                 name: color,
               ))
@@ -93,7 +93,7 @@ ProductModel(
     ProductVariantModel(
       type: "storage",
       options: ["256GB", "512GB", "1TB"]
-          .map((storage) => VariantOption(
+          .map((storage) => VariantOptionModel(
                 id: storage.toLowerCase(),
                 name: storage,
               ))
@@ -117,7 +117,7 @@ ProductModel(
     ProductVariantModel(
       type: "color",
       options: ["Space Gray", "Silver", "Gold"]
-          .map((color) => VariantOption(
+          .map((color) => VariantOptionModel(
                 id: color.toLowerCase().replaceAll(' ', '-'),
                 name: color,
               ))
@@ -126,7 +126,7 @@ ProductModel(
     ProductVariantModel(
       type: "memory",
       options: ["8GB", "16GB", "24GB"]
-          .map((memory) => VariantOption(
+          .map((memory) => VariantOptionModel(
                 id: memory.toLowerCase(),
                 name: memory,
               ))
@@ -155,7 +155,7 @@ ProductModel(
     ProductVariantModel(
       type: "size",
       options: ["7", "8", "9", "10", "11"]
-          .map((size) => VariantOption(
+          .map((size) => VariantOptionModel(
                 id: size, // For numbers, the value itself can be the ID
                 name: size,
               ))
@@ -165,7 +165,7 @@ ProductModel(
     ProductVariantModel(
       type: "color",
       options: ["Black", "White", "Navy"]
-          .map((color) => VariantOption(
+          .map((color) => VariantOptionModel(
                 id: color.toLowerCase(),
                 name: color,
               ))
@@ -191,13 +191,13 @@ ProductModel(
     ProductVariantModel(
       type: "size",
       options: ["28", "30", "32", "34", "36"]
-          .map((size) => VariantOption(id: size, name: size))
+          .map((size) => VariantOptionModel(id: size, name: size))
           .toList(),
     ),
     ProductVariantModel(
       type: "color",
       options: ["Dark Blue", "Light Blue", "Black"]
-          .map((color) => VariantOption(
+          .map((color) => VariantOptionModel(
                 id: color.toLowerCase().replaceAll(' ', '-'),
                 name: color,
               ))
@@ -221,13 +221,13 @@ ProductModel(
     ProductVariantModel(
       type: "size",
       options: ["7", "8", "9", "10", "11"]
-          .map((size) => VariantOption(id: size, name: size))
+          .map((size) => VariantOptionModel(id: size, name: size))
           .toList(),
     ),
     ProductVariantModel(
       type: "color",
       options: ["Black", "White", "Blue"]
-          .map((color) => VariantOption(
+          .map((color) => VariantOptionModel(
                 id: color.toLowerCase(),
                 name: color,
               ))
@@ -255,7 +255,7 @@ ProductModel(
     ProductVariantModel(
       type: "color",
       options: ["Black", "White", "Blue"]
-          .map((color) => VariantOption(
+          .map((color) => VariantOptionModel(
                 id: color.toLowerCase(),
                 name: color,
               ))
@@ -264,7 +264,7 @@ ProductModel(
     ProductVariantModel(
       type: "size",
       options: ["S", "M", "L", "XL"]
-          .map((size) => VariantOption(
+          .map((size) => VariantOptionModel(
                 id: size.toLowerCase(),
                 name: size,
               ))

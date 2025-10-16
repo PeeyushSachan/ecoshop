@@ -3,7 +3,7 @@ import '../theme/app_theme.dart';
 
 
 // ENHANCED: VariantOption class for better data structure
-class VariantOption {
+class VariantOptionModel {
   final String id;
   final String name;
   final String? displayName;
@@ -13,7 +13,7 @@ class VariantOption {
   final bool available;
   final int? stock;
 
-  VariantOption({
+  VariantOptionModel({
     required this.id,
     required this.name,
     this.displayName,
@@ -35,8 +35,8 @@ class VariantOption {
     }
   }
 
-  factory VariantOption.fromJson(Map<String, dynamic> json) {
-    return VariantOption(
+  factory VariantOptionModel.fromJson(Map<String, dynamic> json) {
+    return VariantOptionModel(
       id: json['id'],
       name: json['name'],
       displayName: json['display_name'],

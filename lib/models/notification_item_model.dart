@@ -1,7 +1,7 @@
 // Notification Item Model
 import 'package:flutter/material.dart';
 
-class NotificationItem {
+class NotificationItemModel {
   final String id;
   final String type; // 'order', 'offer', 'account', 'general'
   final String title;
@@ -11,7 +11,7 @@ class NotificationItem {
   final IconData icon;
   final Color color;
 
-  NotificationItem({
+  NotificationItemModel({
     required this.id,
     required this.type,
     required this.title,

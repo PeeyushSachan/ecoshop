@@ -1,5 +1,5 @@
 // Coupon Offer Model
-class CouponOffer {
+class CouponOfferModel {
   final String id;
   final String title;
   final String description;
@@ -12,7 +12,7 @@ class CouponOffer {
   final List<String> termsAndConditions;
   final bool isActive;
 
-  CouponOffer({
+  CouponOfferModel({
     required this.id,
     required this.title,
     required this.description,

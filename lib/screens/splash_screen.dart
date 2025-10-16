@@ -8,7 +8,7 @@ import '../Auth/user/profile_screen.dart';
 import 'category_detail_screen.dart' as category_detail;
 import 'cart_screen.dart';
 import 'search_screen.dart';
-import '../models/category.dart';
+import '../data/category_data.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

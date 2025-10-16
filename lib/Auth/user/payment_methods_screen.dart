@@ -10,8 +10,8 @@ class PaymentMethodsScreen extends StatefulWidget {
 }
 
 class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
-  List<PaymentMethod> paymentMethods = [
-    PaymentMethod(
+  List<PaymentMethodModel> paymentMethods = [
+    PaymentMethodModel(
       id: "1",
       type: "card",
       cardNumber: "4532 **** **** 1234",
@@ -20,7 +20,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
       cardType: "Visa",
       isDefault: true,
     ),
-    PaymentMethod(
+    PaymentMethodModel(
       id: "2",
       type: "card",
       cardNumber: "5678 **** **** 5678",
@@ -29,14 +29,14 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
       cardType: "Mastercard",
       isDefault: false,
     ),
-    PaymentMethod(
+    PaymentMethodModel(
       id: "3",
       type: "upi",
       upiId: "john.doe@paytm",
       holderName: "John Doe",
       isDefault: false,
     ),
-    PaymentMethod(
+    PaymentMethodModel(
       id: "4",
       type: "wallet",
       walletName: "Paytm Wallet",
@@ -308,7 +308,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
     );
   }
 
-  Widget _buildPaymentMethodDetails(PaymentMethod paymentMethod) {
+  Widget _buildPaymentMethodDetails(PaymentMethodModel paymentMethod) {
     switch (paymentMethod.type) {
       case 'card':
         return Column(
@@ -382,7 +382,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
     }
   }
 
-  String _getPaymentMethodTitle(PaymentMethod paymentMethod) {
+  String _getPaymentMethodTitle(PaymentMethodModel paymentMethod) {
     switch (paymentMethod.type) {
       case 'card': return '${paymentMethod.cardType} Card';
       case 'upi': return 'UPI';
@@ -391,7 +391,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
     }
   }
 
-  String _getPaymentMethodSubtitle(PaymentMethod paymentMethod) {
+  String _getPaymentMethodSubtitle(PaymentMethodModel paymentMethod) {
     switch (paymentMethod.type) {
       case 'card': return paymentMethod.cardNumber!;
       case 'upi': return paymentMethod.upiId!;
@@ -418,7 +418,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
     );
   }
 
-  void _showDeleteConfirmation(PaymentMethod paymentMethod, int index) {
+  void _showDeleteConfirmation(PaymentMethodModel paymentMethod, int index) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -590,7 +590,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
           ElevatedButton(
             onPressed: () {
               if (formKey.currentState!.validate()) {
-                final newCard = PaymentMethod(
+                final newCard = PaymentMethodModel(
                   id: DateTime.now().millisecondsSinceEpoch.toString(),
                   type: 'card',
                   cardNumber: '**** **** **** ${cardNumberController.text.substring(cardNumberController.text.length - 4)}',
@@ -674,7 +674,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
           ElevatedButton(
             onPressed: () {
               if (formKey.currentState!.validate()) {
-                final newUPI = PaymentMethod(
+                final newUPI = PaymentMethodModel(
                   id: DateTime.now().millisecondsSinceEpoch.toString(),
                   type: 'upi',
                   upiId: upiIdController.text,
@@ -773,7 +773,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
           ),
           ElevatedButton(
             onPressed: () {
-              final newWallet = PaymentMethod(
+              final newWallet = PaymentMethodModel(
                 id: DateTime.now().millisecondsSinceEpoch.toString(),
                 type: 'wallet',
                 walletName: selectedWallet,
@@ -808,7 +808,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
     );
   }
 
-  void _showEditPaymentMethodDialog(PaymentMethod paymentMethod, int index) {
+  void _showEditPaymentMethodDialog(PaymentMethodModel paymentMethod, int index) {
     // Implementation for editing payment methods
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Edit functionality coming soon')),

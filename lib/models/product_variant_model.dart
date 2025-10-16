@@ -5,7 +5,7 @@ import '../theme/app_theme.dart';
 
 class ProductVariantModel {
   final String type;
-  final List<VariantOption> options; // IMPROVED: Using VariantOption class instead of just strings
+  final List<VariantOptionModel> options; // IMPROVED: Using VariantOption class instead of just strings
   final bool required;
   final String? displayName;
 
@@ -23,7 +23,7 @@ class ProductVariantModel {
     return ProductVariantModel(
       type: json['type'],
       options: (json['options'] as List)
-          .map((option) => VariantOption.fromJson(option))
+          .map((option) => VariantOptionModel.fromJson(option))
           .toList(),
       required: json['required'] ?? true,
       displayName: json['display_name'],

@@ -1,7 +1,7 @@
 // Order Model
 import 'package:ecoshop/models/product_model.dart';
 
-class OrderItem {
+class OrderItemModel {
   final String id;
   final String status;
   final DateTime orderDate;
@@ -10,7 +10,7 @@ class OrderItem {
   final List<ProductModel> items;
   final String? trackingNumber;
 
-  OrderItem({
+  OrderItemModel({
     required this.id,
     required this.status,
     required this.orderDate,

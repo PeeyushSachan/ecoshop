@@ -1,9 +1,9 @@
-import 'package:ecoshop/models/category.dart';
+import 'package:ecoshop/data/category_data.dart';
 import 'package:ecoshop/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
-  final Category category;
+  final CategoryData category;
   final VoidCallback? onTap;
 
   const CategoryCard({

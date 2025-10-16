@@ -1,5 +1,5 @@
 // Address Model
-class Address {
+class AddressModel {
   final String id;
   final String name;
   final String phone;
@@ -11,7 +11,7 @@ class Address {
   final String type;
   bool isDefault;
 
-  Address({
+  AddressModel({
     required this.id,
     required this.name,
     required this.phone,

@@ -45,7 +45,7 @@ _allProducts = [
       ProductVariantModel(
         type: "color",
         options: ["Natural Titanium", "Blue", "White", "Black"]
-            .map((color) => VariantOption(
+            .map((color) => VariantOptionModel(
                   id: color.toLowerCase().replaceAll(' ', '-'),
                   name: color,
                 ))
@@ -54,7 +54,7 @@ _allProducts = [
       ProductVariantModel(
         type: "storage",
         options: ["128GB", "256GB", "512GB"]
-            .map((storage) => VariantOption(
+            .map((storage) => VariantOptionModel(
                   id: storage.toLowerCase(),
                   name: storage,
                 ))
@@ -80,13 +80,13 @@ _allProducts = [
       ProductVariantModel(
         type: "size",
         options: ["7", "8", "9", "10", "11"]
-            .map((size) => VariantOption(id: size, name: size))
+            .map((size) => VariantOptionModel(id: size, name: size))
             .toList(),
       ),
       ProductVariantModel(
         type: "color",
         options: ["Black", "White", "Navy", "Red"]
-            .map((color) => VariantOption(
+            .map((color) => VariantOptionModel(
                   id: color.toLowerCase(),
                   name: color,
                 ))

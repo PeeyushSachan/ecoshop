@@ -46,8 +46,8 @@ class _FlashSaleScreenState extends State<FlashSaleScreen> {
   }
 
   // Sample Flash Sale Products with timers
-final List<FlashSaleProduct> flashSaleProducts = [
-  FlashSaleProduct(
+final List<FlashSaleProductModel> flashSaleProducts = [
+  FlashSaleProductModel(
     product: ProductModel(
       id: 4001,
       name: "Wireless Earbuds Pro",
@@ -62,7 +62,7 @@ final List<FlashSaleProduct> flashSaleProducts = [
         ProductVariantModel(
           type: "color",
           options: ["Black", "White", "Blue"]
-              .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+              .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
               .toList(),
         )
       ],
@@ -74,7 +74,7 @@ final List<FlashSaleProduct> flashSaleProducts = [
     soldCount: 67,
     flashSalePrice: 1999,
   ),
-  FlashSaleProduct(
+  FlashSaleProductModel(
     product: ProductModel(
       id: 4002,
       name: "Smart Fitness Watch",
@@ -89,7 +89,7 @@ final List<FlashSaleProduct> flashSaleProducts = [
         ProductVariantModel(
           type: "color",
           options: ["Black", "Silver", "Rose Gold"]
-              .map((e) => VariantOption(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
+              .map((e) => VariantOptionModel(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
               .toList(),
         )
       ],
@@ -101,7 +101,7 @@ final List<FlashSaleProduct> flashSaleProducts = [
     soldCount: 32,
     flashSalePrice: 2499,
   ),
-  FlashSaleProduct(
+  FlashSaleProductModel(
     product: ProductModel(
       id: 4003,
       name: "Bluetooth Speaker",
@@ -116,7 +116,7 @@ final List<FlashSaleProduct> flashSaleProducts = [
         ProductVariantModel(
           type: "color",
           options: ["Black", "Red", "Blue"]
-              .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+              .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
               .toList(),
         )
       ],
@@ -128,7 +128,7 @@ final List<FlashSaleProduct> flashSaleProducts = [
     soldCount: 45,
     flashSalePrice: 1499,
   ),
-  FlashSaleProduct(
+  FlashSaleProductModel(
     product: ProductModel(
       id: 4004,
       name: "Gaming Mouse",
@@ -143,7 +143,7 @@ final List<FlashSaleProduct> flashSaleProducts = [
         ProductVariantModel(
           type: "color",
           options: ["Black", "White"]
-              .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+              .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
               .toList(),
         )
       ],
@@ -155,7 +155,7 @@ final List<FlashSaleProduct> flashSaleProducts = [
     soldCount: 28,
     flashSalePrice: 899,
   ),
-  FlashSaleProduct(
+  FlashSaleProductModel(
     product: ProductModel(
       id: 4005,
       name: "Wireless Charger",
@@ -170,7 +170,7 @@ final List<FlashSaleProduct> flashSaleProducts = [
         ProductVariantModel(
           type: "color",
           options: ["Black", "White"]
-              .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+              .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
               .toList(),
         )
       ],
@@ -184,9 +184,9 @@ final List<FlashSaleProduct> flashSaleProducts = [
   ),
 ];
 
-  List<FlashSaleProduct> get _sortedProducts {
-    List<FlashSaleProduct> products = List.from(flashSaleProducts);
-    
+  List<FlashSaleProductModel> get _sortedProducts {
+    List<FlashSaleProductModel> products = List.from(flashSaleProducts);
+
     switch (_sortBy) {
       case 'price_low':
         products.sort((a, b) => a.flashSalePrice.compareTo(b.flashSalePrice));
@@ -504,7 +504,7 @@ final List<FlashSaleProduct> flashSaleProducts = [
     );
   }
 
-  Widget _buildFlashSaleCard(FlashSaleProduct flashProduct) {
+  Widget _buildFlashSaleCard(FlashSaleProductModel flashProduct) {
     final product = flashProduct.product;
     final timeLeft = flashProduct.timeLeft;
     final isEnding = timeLeft.inMinutes < 60;
@@ -730,7 +730,7 @@ final List<FlashSaleProduct> flashSaleProducts = [
     );
   }
 
-  Widget _buildFlashSaleListItem(FlashSaleProduct flashProduct) {
+  Widget _buildFlashSaleListItem(FlashSaleProductModel flashProduct) {
     final product = flashProduct.product;
     final timeLeft = flashProduct.timeLeft;
     final isEnding = timeLeft.inMinutes < 60;

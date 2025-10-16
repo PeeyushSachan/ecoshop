@@ -48,7 +48,7 @@ class _VariantSelectorState extends State<VariantSelector> {
   }
 
   Widget _buildVariantHeader() {
-    VariantOption? selectedOption = widget.selectedValue != null
+    VariantOptionModel? selectedOption = widget.selectedValue != null
         ? widget.variant.options.firstWhere(
             (option) => option.id == widget.selectedValue,
             orElse: () => widget.variant.options.first,

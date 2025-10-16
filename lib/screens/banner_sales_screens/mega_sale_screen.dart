@@ -36,13 +36,13 @@ final List<ProductModel> saleProducts = [
       ProductVariantModel(
         type: "color",
         options: ["Space Black", "Deep Purple", "Gold", "Silver"]
-            .map((e) => VariantOption(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "storage",
         options: ["128GB", "256GB", "512GB", "1TB"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -63,13 +63,13 @@ final List<ProductModel> saleProducts = [
       ProductVariantModel(
         type: "color",
         options: ["Phantom Black", "Cream", "Green"]
-            .map((e) => VariantOption(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "storage",
         options: ["256GB", "512GB", "1TB"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -90,13 +90,13 @@ final List<ProductModel> saleProducts = [
       ProductVariantModel(
         type: "color",
         options: ["Space Gray", "Silver", "Gold", "Starlight"]
-            .map((e) => VariantOption(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "memory",
         options: ["8GB", "16GB", "24GB"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -117,13 +117,13 @@ final List<ProductModel> saleProducts = [
       ProductVariantModel(
         type: "size",
         options: ["7", "8", "9", "10", "11"]
-            .map((e) => VariantOption(id: e, name: e))
+            .map((e) => VariantOptionModel(id: e, name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "color",
         options: ["Black/Red", "White/Black", "Royal Blue"]
-            .map((e) => VariantOption(id: e.toLowerCase().replaceAll(' ', '-').replaceAll('/', '-'), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase().replaceAll(' ', '-').replaceAll('/', '-'), name: e))
             .toList(),
       )
     ],
@@ -144,7 +144,7 @@ final List<ProductModel> saleProducts = [
       ProductVariantModel(
         type: "color",
         options: ["Black", "Silver"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],

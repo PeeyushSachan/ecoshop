@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../models/product_model.dart';
 import 'category_detail_screen.dart';
-import '../models/category.dart' as cat;
+import '../data/category_data.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({Key? key}) : super(key: key);
@@ -14,18 +14,18 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen> {
 
 
-  
-  final List<cat.Category> categories = [
-    cat.Category(id: 1, name: "Electronics", icon: "📱", color: "#10B981"),
-    cat.Category(id: 2, name: "Fashion", icon: "👕", color: "#8B5CF6"),
-    cat.Category(id: 3, name: "Home & Garden", icon: "🏠", color: "#F59E0B"),
-    cat.Category(id: 4, name: "Sports & Fitness", icon: "⚽", color: "#EF4444"),
-    cat.Category(id: 5, name: "Beauty & Care", icon: "💄", color: "#EC4899"),
-    cat.Category(id: 6, name: "Books & Media", icon: "📚", color: "#3B82F6"),
-    cat.Category(id: 7, name: "Automotive", icon: "🚗", color: "#059669"),
-    cat.Category(id: 8, name: "Baby & Kids", icon: "🍼", color: "#F97316"),
-    cat.Category(id: 9, name: "Grocery", icon: "🛒", color: "#84CC16"),
-    cat.Category(id: 10, name: "Health", icon: "⚕️", color: "#06B6D4"),
+
+  final List<CategoryData> categories = [
+    CategoryData(id: 1, name: "Electronics", icon: "📱", color: "#10B981"),
+    CategoryData(id: 2, name: "Fashion", icon: "👕", color: "#8B5CF6"),
+    CategoryData(id: 3, name: "Home & Garden", icon: "🏠", color: "#F59E0B"),
+    CategoryData(id: 4, name: "Sports & Fitness", icon: "⚽", color: "#EF4444"),
+    CategoryData(id: 5, name: "Beauty & Care", icon: "💄", color: "#EC4899"),
+    CategoryData(id: 6, name: "Books & Media", icon: "📚", color: "#3B82F6"),
+    CategoryData(id: 7, name: "Automotive", icon: "🚗", color: "#059669"),
+    CategoryData(id: 8, name: "Baby & Kids", icon: "🍼", color: "#F97316"),
+    CategoryData(id: 9, name: "Grocery", icon: "🛒", color: "#84CC16"),
+    CategoryData(id: 10, name: "Health", icon: "⚕️", color: "#06B6D4"),
   ];
 
   Color _parseCategoryColor(String hexColor) {

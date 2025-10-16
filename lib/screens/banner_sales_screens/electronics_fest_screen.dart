@@ -72,13 +72,13 @@ final List<ProductModel> smartphones = [
       ProductVariantModel(
         type: "color",
         options: ["Natural Titanium", "Blue Titanium", "White Titanium"]
-            .map((e) => VariantOption(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "storage",
         options: ["128GB", "256GB", "512GB", "1TB"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -99,13 +99,13 @@ final List<ProductModel> smartphones = [
       ProductVariantModel(
         type: "color",
         options: ["Titanium Black", "Titanium Gray", "Titanium Violet"]
-            .map((e) => VariantOption(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "storage",
         options: ["256GB", "512GB", "1TB"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -129,13 +129,13 @@ final List<ProductModel> laptops = [
       ProductVariantModel(
         type: "color",
         options: ["Space Gray", "Silver", "Gold", "Starlight"]
-            .map((e) => VariantOption(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "memory",
         options: ["8GB", "16GB", "24GB"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -156,13 +156,13 @@ final List<ProductModel> laptops = [
       ProductVariantModel(
         type: "processor",
         options: ["Intel i5", "Intel i7"]
-            .map((e) => VariantOption(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "storage",
         options: ["256GB", "512GB", "1TB"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -186,13 +186,13 @@ final List<ProductModel> tablets = [
       ProductVariantModel(
         type: "color",
         options: ["Space Gray", "Silver"]
-            .map((e) => VariantOption(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "storage",
         options: ["128GB", "256GB", "512GB", "1TB"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -216,7 +216,7 @@ final List<ProductModel> headphones = [
       ProductVariantModel(
         type: "color",
         options: ["Black", "Silver"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -237,7 +237,7 @@ final List<ProductModel> headphones = [
       ProductVariantModel(
         type: "color",
         options: ["White"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -261,13 +261,13 @@ final List<ProductModel> smartwatches = [
       ProductVariantModel(
         type: "size",
         options: ["41mm", "45mm"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "color",
         options: ["Midnight", "Starlight", "Silver", "Red"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],

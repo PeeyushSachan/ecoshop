@@ -28,8 +28,8 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
   }
 
   // Sample Gift Cards Data
-  final List<GiftCard> availableGiftCards = [
-    GiftCard(
+  final List<GiftCardModel> availableGiftCards = [
+    GiftCardModel(
       id: "1",
       brand: "Amazon",
       value: 500,
@@ -41,7 +41,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
       purchaseDate: DateTime.now(),
       expiryDate: DateTime.now().add(const Duration(days: 365)),
     ),
-    GiftCard(
+    GiftCardModel(
       id: "2",
       brand: "Flipkart",
       value: 1000,
@@ -53,7 +53,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
       purchaseDate: DateTime.now(),
       expiryDate: DateTime.now().add(const Duration(days: 365)),
     ),
-    GiftCard(
+    GiftCardModel(
       id: "3",
       brand: "Starbucks",
       value: 300,
@@ -65,7 +65,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
       purchaseDate: DateTime.now(),
       expiryDate: DateTime.now().add(const Duration(days: 180)),
     ),
-    GiftCard(
+    GiftCardModel(
       id: "4",
       brand: "Netflix",
       value: 649,
@@ -77,7 +77,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
       purchaseDate: DateTime.now(),
       expiryDate: DateTime.now().add(const Duration(days: 30)),
     ),
-    GiftCard(
+    GiftCardModel(
       id: "5",
       brand: "Zomato",
       value: 500,
@@ -89,7 +89,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
       purchaseDate: DateTime.now(),
       expiryDate: DateTime.now().add(const Duration(days: 180)),
     ),
-    GiftCard(
+    GiftCardModel(
       id: "6",
       brand: "BookMyShow",
       value: 400,
@@ -103,8 +103,8 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
     ),
   ];
 
-  final List<GiftCard> myGiftCards = [
-    GiftCard(
+  final List<GiftCardModel> myGiftCards = [
+    GiftCardModel(
       id: "7",
       brand: "Amazon",
       value: 1000,
@@ -118,7 +118,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
       code: "AMZ-GIFT-2024-XY7K9",
       balance: 750,
     ),
-    GiftCard(
+    GiftCardModel(
       id: "8",
       brand: "Starbucks",
       value: 500,
@@ -134,8 +134,8 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
     ),
   ];
 
-  final List<GiftCard> sentGiftCards = [
-    GiftCard(
+  final List<GiftCardModel> sentGiftCards = [
+    GiftCardModel(
       id: "9",
       brand: "Netflix",
       value: 649,
@@ -350,7 +350,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
     );
   }
 
-  Widget _buildGiftCardItem(GiftCard giftCard, String type) {
+  Widget _buildGiftCardItem(GiftCardModel giftCard, String type) {
     return GestureDetector(
       onTap: () => _showGiftCardDetails(giftCard, type),
       child: Container(
@@ -442,7 +442,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
     );
   }
 
-  Widget _buildMyGiftCardItem(GiftCard giftCard) {
+  Widget _buildMyGiftCardItem(GiftCardModel giftCard) {
     return Container(
       decoration: AppTheme.cardDecoration.copyWith(
         border: giftCard.isActive 
@@ -636,7 +636,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
     );
   }
 
-  Widget _buildSentGiftCardItem(GiftCard giftCard) {
+  Widget _buildSentGiftCardItem(GiftCardModel giftCard) {
     return Container(
       decoration: AppTheme.cardDecoration,
       child: Padding(
@@ -747,7 +747,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
     );
   }
 
-  void _showGiftCardDetails(GiftCard giftCard, String type) {
+  void _showGiftCardDetails(GiftCardModel giftCard, String type) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -902,7 +902,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
     _giftCardCodeController.clear();
   }
 
-  void _buyGiftCard(GiftCard giftCard) {
+  void _buyGiftCard(GiftCardModel giftCard) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('${giftCard.brand} gift card purchased successfully!'),
@@ -911,7 +911,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
     );
   }
 
-  void _sendGiftCard(GiftCard giftCard) {
+  void _sendGiftCard(GiftCardModel giftCard) {
     // Show send gift dialog
     showDialog(
       context: context,
@@ -975,7 +975,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> with SingleTickerProvid
     );
   }
 
-  void _useGiftCard(GiftCard giftCard) {
+  void _useGiftCard(GiftCardModel giftCard) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('${giftCard.brand} gift card applied to your cart!'),

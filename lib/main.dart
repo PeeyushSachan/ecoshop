@@ -28,6 +28,7 @@ import 'Auth/user/support_and_Legal/terms_conditions_screen.dart' as termscondit
 import 'screens/flash_sale_screen.dart';
 import 'screens/banner_sales_screens/new_arrivals_screen.dart';
 import 'screens/banner_sales_screens/electronics_fest_screen.dart';
+import 'Auth/user/edit_profile_screen.dart';
 
 void main() {
   runApp(const EcoShopApp());
@@ -66,6 +67,9 @@ class EcoShopApp extends StatelessWidget {
         '/coupons-and-offers': (context) => const coupons.CouponsOffersScreen(),
        '/notifications':(context) => const notifications.NotificationsScreen(),
        '/gift-card':(context)=> const giftcard.GiftCardScreen(),
+
+       //edit profile
+       '/edit-profile':(context) => const EditProfileScreen(),
 
 
        //support and legal

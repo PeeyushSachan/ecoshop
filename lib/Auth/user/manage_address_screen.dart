@@ -10,8 +10,8 @@ class ManageAddressScreen extends StatefulWidget {
 }
 
 class _ManageAddressScreenState extends State<ManageAddressScreen> {
-  List<Address> addresses = [
-    Address(
+  List<AddressModel> addresses = [
+    AddressModel(
       id: "1",
       name: "John Doe",
       phone: "+91 9876543210",
@@ -23,7 +23,7 @@ class _ManageAddressScreenState extends State<ManageAddressScreen> {
       isDefault: true,
       type: "Home",
     ),
-    Address(
+    AddressModel(
       id: "2",
       name: "John Doe",
       phone: "+91 9876543210",
@@ -35,7 +35,7 @@ class _ManageAddressScreenState extends State<ManageAddressScreen> {
       isDefault: false,
       type: "Office",
     ),
-    Address(
+    AddressModel(
       id: "3",
       name: "Jane Doe",
       phone: "+91 9876543211",
@@ -348,7 +348,7 @@ class _ManageAddressScreenState extends State<ManageAddressScreen> {
     );
   }
 
-  void _showDeleteConfirmation(Address address, int index) {
+  void _showDeleteConfirmation(AddressModel address, int index) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -393,11 +393,11 @@ class _ManageAddressScreenState extends State<ManageAddressScreen> {
     _showAddressDialog(null, -1);
   }
 
-  void _showEditAddressDialog(Address address, int index) {
+  void _showEditAddressDialog(AddressModel address, int index) {
     _showAddressDialog(address, index);
   }
 
-  void _showAddressDialog(Address? existingAddress, int index) {
+  void _showAddressDialog(AddressModel? existingAddress, int index) {
     final formKey = GlobalKey<FormState>();
     final nameController = TextEditingController(text: existingAddress?.name ?? '');
     final phoneController = TextEditingController(text: existingAddress?.phone ?? '');
@@ -501,7 +501,7 @@ class _ManageAddressScreenState extends State<ManageAddressScreen> {
           ElevatedButton(
             onPressed: () {
               if (formKey.currentState!.validate()) {
-                final newAddress = Address(
+                final newAddress = AddressModel(
                   id: existingAddress?.id ?? DateTime.now().millisecondsSinceEpoch.toString(),
                   name: nameController.text,
                   phone: phoneController.text,

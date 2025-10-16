@@ -47,7 +47,7 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       ProductVariantModel(
         type: "color",
         options: ["Natural Titanium", "Blue Titanium"]
-            .map((color) => VariantOption(
+            .map((color) => VariantOptionModel(
                   id: color.toLowerCase().replaceAll(' ', '-'),
                   name: color,
                 ))
@@ -56,7 +56,7 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       ProductVariantModel(
         type: "storage",
         options: ["128GB", "256GB", "512GB", "1TB"]
-            .map((storage) => VariantOption(
+            .map((storage) => VariantOptionModel(
                   id: storage.toLowerCase(),
                   name: storage,
                 ))
@@ -83,13 +83,13 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       ProductVariantModel(
         type: "size",
         options: ["7", "8", "9", "10", "11"]
-            .map((size) => VariantOption(id: size, name: size))
+            .map((size) => VariantOptionModel(id: size, name: size))
             .toList(),
       ),
       ProductVariantModel(
         type: "color",
         options: ["Black", "White", "Navy", "Red"]
-            .map((color) => VariantOption(
+            .map((color) => VariantOptionModel(
                   id: color.toLowerCase(),
                   name: color,
                 ))
@@ -116,7 +116,7 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       ProductVariantModel(
         type: "color",
         options: ["Black", "Silver"]
-            .map((color) => VariantOption(
+            .map((color) => VariantOptionModel(
                   id: color.toLowerCase(),
                   name: color,
                 ))
@@ -140,13 +140,13 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       ProductVariantModel(
         type: "size",
         options: ["7", "8", "9", "10", "11"]
-            .map((size) => VariantOption(id: size, name: size))
+            .map((size) => VariantOptionModel(id: size, name: size))
             .toList(),
       ),
       ProductVariantModel(
         type: "color",
         options: ["Black", "White", "Blue"]
-            .map((color) => VariantOption(
+            .map((color) => VariantOptionModel(
                   id: color.toLowerCase(),
                   name: color,
                 ))
@@ -170,7 +170,7 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       ProductVariantModel(
         type: "color",
         options: ["Titanium Black", "Titanium Gray"]
-            .map((color) => VariantOption(
+            .map((color) => VariantOptionModel(
                   id: color.toLowerCase().replaceAll(' ', '-'),
                   name: color,
                 ))
@@ -179,7 +179,7 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       ProductVariantModel(
         type: "storage",
         options: ["256GB", "512GB", "1TB"]
-            .map((storage) => VariantOption(
+            .map((storage) => VariantOptionModel(
                   id: storage.toLowerCase(),
                   name: storage,
                 ))

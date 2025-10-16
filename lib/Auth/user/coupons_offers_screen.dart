@@ -28,8 +28,8 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
   }
 
   // Sample Coupons Data
-  final List<CouponOffer> availableCoupons = [
-    CouponOffer(
+  final List<CouponOfferModel> availableCoupons = [
+    CouponOfferModel(
       id: "1",
       title: "FIRST50",
       description: "Get 50% off on your first order",
@@ -47,7 +47,7 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
       ],
       isActive: true,
     ),
-    CouponOffer(
+    CouponOfferModel(
       id: "2",
       title: "SAVE20",
       description: "Flat ₹200 off on orders above ₹1999",
@@ -64,7 +64,7 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
       ],
       isActive: true,
     ),
-    CouponOffer(
+    CouponOfferModel(
       id: "3",
       title: "FASHION30",
       description: "30% off on Fashion items",
@@ -81,7 +81,7 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
       ],
       isActive: true,
     ),
-    CouponOffer(
+    CouponOfferModel(
       id: "4",
       title: "ELECTRONICS15",
       description: "15% off on Electronics",
@@ -100,8 +100,8 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
     ),
   ];
 
-  final List<CouponOffer> expiredCoupons = [
-    CouponOffer(
+  final List<CouponOfferModel> expiredCoupons = [
+    CouponOfferModel(
       id: "5",
       title: "WELCOME25",
       description: "25% off on first purchase",
@@ -116,8 +116,8 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
     ),
   ];
 
-  final List<CouponOffer> usedCoupons = [
-    CouponOffer(
+  final List<CouponOfferModel> usedCoupons = [
+    CouponOfferModel(
       id: "6",
       title: "SAVE100",
       description: "₹100 off on orders above ₹999",
@@ -271,7 +271,7 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
     );
   }
 
-  Widget _buildCouponsList(List<CouponOffer> coupons, String type) {
+  Widget _buildCouponsList(List<CouponOfferModel> coupons, String type) {
     if (coupons.isEmpty) {
       return Center(
         child: Column(
@@ -317,7 +317,7 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
     );
   }
 
-  Widget _buildCouponCard(CouponOffer coupon, String type) {
+  Widget _buildCouponCard(CouponOfferModel coupon, String type) {
     final isExpired = type == 'expired';
     final isUsed = type == 'used';
     final isAvailable = type == 'available';
@@ -558,7 +558,7 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
     }
   }
 
-  String _getDiscountText(CouponOffer coupon) {
+  String _getDiscountText(CouponOfferModel coupon) {
     if (coupon.discountType == 'percentage') {
       return '${coupon.discountValue}% off (up to ₹${coupon.maxDiscountAmount})';
     } else {
@@ -634,7 +634,7 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
     // Find coupon in available coupons
     final coupon = availableCoupons.firstWhere(
       (c) => c.title.toLowerCase() == code.toLowerCase(),
-      orElse: () => CouponOffer(
+      orElse: () => CouponOfferModel(
         id: '',
         title: '',
         description: '',
@@ -661,7 +661,7 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
     }
   }
 
-  void _applyCoupon(CouponOffer coupon) {
+  void _applyCoupon(CouponOfferModel coupon) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Coupon "${coupon.title}" applied successfully!'),
@@ -678,7 +678,7 @@ class _CouponsOffersScreenState extends State<CouponsOffersScreen> with SingleTi
     _couponCodeController.clear();
   }
 
-  void _showTermsAndConditions(CouponOffer coupon) {
+  void _showTermsAndConditions(CouponOfferModel coupon) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(

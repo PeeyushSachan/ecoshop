@@ -46,13 +46,13 @@ final List<ProductModel> menFashion = [
       ProductVariantModel(
         type: "size",
         options: ["S", "M", "L", "XL", "XXL"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "color",
         options: ["Navy", "White", "Black", "Grey"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -73,13 +73,13 @@ final List<ProductModel> menFashion = [
       ProductVariantModel(
         type: "size",
         options: ["28", "30", "32", "34", "36"]
-            .map((e) => VariantOption(id: e, name: e))
+            .map((e) => VariantOptionModel(id: e, name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "color",
         options: ["Dark Blue", "Light Blue", "Black"]
-            .map((e) => VariantOption(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
             .toList(),
       )
     ],
@@ -103,13 +103,13 @@ final List<ProductModel> womenFashion = [
       ProductVariantModel(
         type: "size",
         options: ["XS", "S", "M", "L", "XL"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "color",
         options: ["Pink Floral", "Blue Floral", "White Floral"]
-            .map((e) => VariantOption(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase().replaceAll(' ', '-'), name: e))
             .toList(),
       )
     ],
@@ -130,7 +130,7 @@ final List<ProductModel> womenFashion = [
       ProductVariantModel(
         type: "color",
         options: ["Black", "Brown", "Tan", "Red"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -154,13 +154,13 @@ final List<ProductModel> kidsFashion = [
       ProductVariantModel(
         type: "size",
         options: ["2-3Y", "4-5Y", "6-7Y", "8-9Y"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       ),
       ProductVariantModel(
         type: "color",
         options: ["Blue", "Red", "Green", "Yellow"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -184,7 +184,7 @@ final List<ProductModel> accessories = [
       ProductVariantModel(
         type: "color",
         options: ["Black", "Brown", "Navy"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],
@@ -205,7 +205,7 @@ final List<ProductModel> accessories = [
       ProductVariantModel(
         type: "style",
         options: ["Aviator", "Wayfarer", "Round"]
-            .map((e) => VariantOption(id: e.toLowerCase(), name: e))
+            .map((e) => VariantOptionModel(id: e.toLowerCase(), name: e))
             .toList(),
       )
     ],

@@ -2,14 +2,14 @@
 // Flash Sale Product Model
 import 'package:ecoshop/models/product_model.dart';
 
-class FlashSaleProduct {
+class FlashSaleProductModel {
   final ProductModel product;
   final DateTime flashSaleEndTime;
   final int originalStock;
   final int soldCount;
   final double flashSalePrice;
 
-  FlashSaleProduct({
+  FlashSaleProductModel({
     required this.product,
     required this.flashSaleEndTime,
     required this.originalStock,

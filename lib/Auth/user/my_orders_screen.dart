@@ -27,8 +27,8 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
   }
 
   // Sample Orders Data
-  final List<OrderItem> allOrders = [
-    OrderItem(
+  final List<OrderItemModel> allOrders = [
+    OrderItemModel(
       id: "ORD001",
       status: "delivered",
       orderDate: DateTime.now().subtract(const Duration(days: 3)),
@@ -52,7 +52,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
       ],
       trackingNumber: "TRK123456789",
     ),
-    OrderItem(
+    OrderItemModel(
       id: "ORD002",
       status: "shipped",
       orderDate: DateTime.now().subtract(const Duration(days: 2)),
@@ -76,7 +76,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
       ],
       trackingNumber: "TRK987654321",
     ),
-    OrderItem(
+    OrderItemModel(
       id: "ORD003",
       status: "processing",
       orderDate: DateTime.now().subtract(const Duration(days: 1)),
@@ -100,7 +100,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
       ],
       trackingNumber: "TRK456789123",
     ),
-    OrderItem(
+    OrderItemModel(
       id: "ORD004",
       status: "cancelled",
       orderDate: DateTime.now().subtract(const Duration(days: 5)),
@@ -124,7 +124,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
       ],
       trackingNumber: null,
     ),
-    OrderItem(
+    OrderItemModel(
       id: "ORD005",
       status: "processing",
       orderDate: DateTime.now().subtract(const Duration(hours: 12)),
@@ -151,7 +151,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
   ];
 
   // Get filtered orders based on tab index
-  List<OrderItem> getFilteredOrders(int tabIndex) {
+  List<OrderItemModel> getFilteredOrders(int tabIndex) {
     switch (tabIndex) {
       case 0: return allOrders; // All Orders
       case 1: return allOrders.where((order) => order.status == 'processing').toList(); // Processing
@@ -436,7 +436,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
     }
   }
 
-  Widget _buildOrderItem(ProductModel product, OrderItem order) {
+  Widget _buildOrderItem(ProductModel product, OrderItemModel order) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       child: Row(
@@ -570,7 +570,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
     return '${date.day}/${date.month}/${date.year}';
   }
 
-  void _showTrackingDialog(OrderItem order) {
+  void _showTrackingDialog(OrderItemModel order) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -647,7 +647,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> with SingleTickerProvid
     );
   }
 
-  void _showOrderDetails(OrderItem order) {
+  void _showOrderDetails(OrderItemModel order) {
     showModalBottomSheet(
       context: context,
       backgroundColor: AppTheme.backgroundDark,

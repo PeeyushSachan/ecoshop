@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../models/product_model.dart' as models;
-import '../models/category.dart'; // Ensure this file exports a 'Category' class
+import '../data/category_data.dart'; // Ensure this file exports a 'Category' class
 
 class ProductCard extends StatelessWidget {
   final models.ProductModel product;

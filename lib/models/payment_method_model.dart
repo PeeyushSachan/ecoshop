@@ -1,5 +1,5 @@
 // Payment Method Model
-class PaymentMethod {
+class PaymentMethodModel {
   final String id;
   final String type; // 'card', 'upi', 'wallet'
   final String? cardNumber;
@@ -11,7 +11,7 @@ class PaymentMethod {
   final double? balance;
   bool isDefault;
 
-  PaymentMethod({
+  PaymentMethodModel({
     required this.id,
     required this.type,
     this.cardNumber,
